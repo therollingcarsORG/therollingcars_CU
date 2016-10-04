@@ -1,3 +1,1 @@
 # therollingcars
-
-# TEST TUTORIAL CODE _ INITIAL SYSTEM CHECK

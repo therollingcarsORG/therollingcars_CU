@@ -13,7 +13,6 @@ app.get('/', function(req, res) {
     res.sendfile('./public/views/index.html');
 });
 
-
 app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
 
@@ -58,5 +57,13 @@ app.put('/contactlist/:id', function (req, res) {
   );
 });
 
-app.listen(3000);
+var server = app.listen(3000, function () {
+  var port = server.address().port;
+  console.log('Example app listening at port %s', port);
+});
+
+module.exports = server;
+
+//app.listen(3000);
+
 console.log("Server running on port 3000");

@@ -109,7 +109,17 @@ module.exports = function(grunt){
 					]
 				}
 			}
+		},
+
+		mochaTest: {
+			all: {
+				options: {
+					reporter: 'list'
+				},
+				src: ['test/server/*.test.js']
+			}
 		}
+
 
 
 	});
@@ -123,12 +133,16 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-mocha-test');
 
 
 	// register when grunt is run
 	grunt.registerTask('build', ['less', 'cssmin', 'jshint', 'uglify']);
-	grunt.registerTask('test', ['jshint', 'karma']);
+	grunt.registerTask('test-client', ['jshint', 'karma']);
   	grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'uglify', 'concurrent']);
+  	grunt.registerTask('test_server', ['mochaTest']);
+  	grunt.registerTask('test', ['jshint', 'karma', 'mochaTest']);
+
 
 
 };

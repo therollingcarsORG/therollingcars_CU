@@ -140,7 +140,7 @@ module.exports = function(grunt){
 	grunt.registerTask('build', ['less', 'cssmin', 'jshint', 'uglify']);
 	grunt.registerTask('test-client', ['jshint', 'karma']);
   	grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'uglify', 'concurrent']);
-  	grunt.registerTask('test_server', ['mochaTest']);
+  	grunt.registerTask('test-server', ['mochaTest']);
   	grunt.registerTask('test', ['jshint', 'karma', 'mochaTest']);
 
 

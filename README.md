@@ -6,6 +6,10 @@ Basics for MEAN stack of tutorial
 2. npm install
 3. mongod  
   
-grunt build   // less, cssmin, jshint, uglify  
-grunt test    // jshint, karma tests  
-grunt 		  // less, cssmin, jshint, uglify, concurrent (run service, autoupdate)  
+grunt build				// less, cssmin, jshint, uglify  
+grunt test					// jshint, karma, mochaTest
+grunt 						// less, cssmin, jshint, uglify, concurrent (run service, autoupdate)  
+grunt test-server			// mochaTest
+grunt test-client 			// jshint, karma
+
+npm start					// start a server

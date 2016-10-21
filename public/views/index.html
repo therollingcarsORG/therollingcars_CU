@@ -1,5 +1,8 @@
 <!DOCTYPE>
+
+
 <html ng-app="myApp">
+
 <head>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -10,6 +13,7 @@
   <title>Contact List App</title>
 </head>
 <body>
+  
   <div class="container" ng-controller="AppCtrl">
     <h1>Contact List App</h1>
 
@@ -42,6 +46,12 @@
     </table>
 
   </div>
+
+<div ng-controller="bottomController">
+    {{message}}
+</div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
 <script src="dist/js/app.min.js"></script>
 </body>

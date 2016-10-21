@@ -1,2 +1,2 @@
 // public/src/js/app.js
-angular.module('gruntApp', ['MainCtrl', 'TestService']); 
+angular.module('myApp', ['MainCtrl', 'BtmCtrl', 'TestService']); 

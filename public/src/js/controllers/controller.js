@@ -1,7 +1,10 @@
-var myApp = angular.module('myApp', []);
-myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
-    console.log("Hello World from controller");
+// public/src/js/controllers/controller.js
 
+angular.module('MainCtrl', [])
+
+.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+
+console.log("Hello World from controller");
 
 var refresh = function() {
   $http.get('/contactlist').success(function(response) {

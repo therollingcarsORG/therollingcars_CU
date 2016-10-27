@@ -1,0 +1,68 @@
+<!DOCTYPE>
+
+
+<html ng-app="inventoryApp">
+
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<script src='src/js/controllers/inventoryController.js'></script>
+  <title>Inventory</title>
+</head>
+<body>
+  
+  <div class="container" ng-controller="inventoryCtrl">
+    <h1>The Rolling Cars</h1>
+    <h2>Inventory Management Tool</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Make</th>         
+          <th>Model</th>
+          <th>Miles</th>
+          <th>Year</th>
+          <th>Color</th>
+          <th>Price</th>
+          <th>Cost</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" ng-model="vehicle.make"></td>
+          <td><input class="form-control" ng-model="vehicle.model"></td>
+          <td><input class="form-control" ng-model="vehicle.miles"></td>
+          <td><input class="form-control" ng-model="vehicle.year"></td>
+          <td><input class="form-control" ng-model="vehicle.color"></td>
+          <td><input class="form-control" ng-model="vehicle.price"></td>
+          <td><input class="form-control" ng-model="vehicle.cost"></td>
+          <td><button class="btn btn-primary" ng-click="addVehicle()">Add Vehicle</button></td>
+          <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+        </tr>
+        <tr ng-repeat="vehicle in inventory">
+          <td>{{vehicle.make}}</td>
+          <td>{{vehicle.model}}</td>
+          <td>{{vehicle.miles}}</td>
+          <td>{{vehicle.year}}</td>
+          <td>{{vehicle.color}}</td>
+          <td>{{vehicle.price}}</td>
+          <td>{{vehicle.cost}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(vehicle._id)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(vehicle._id)">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+
+
+</body>
+</html>

@@ -62,6 +62,17 @@ app.put('/inventory/:id', function (req, res) {
   );
 });
 
+app.get('/login', function (req, res) {
+  console.log('I received a login page GET request');
+  res.sendfile('./public/views/login.html');
+});
+
+app.get('/signup', function (req, res) {
+  console.log('I received a signup page GET request');
+  console.log(res);
+  res.sendfile('./public/views/signup.html');
+});
+
 var server = app.listen(3000, function () {
   var port = server.address().port;
   console.log('Example app listening at port %s', port);

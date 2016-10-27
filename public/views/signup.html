@@ -1,0 +1,34 @@
+<!DOCTYPE>
+
+
+<html ng-app="loginApp">
+
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<script src='src/js/controllers/signupController.js'></script>
+
+  <title>Sign Up</title>
+</head>
+<body>
+  
+  <div class="container" ng-controller="inventoryCtrl">
+    <h1>The Rolling Cars</h1>
+    <h2>Sign Up</h2>
+    <input class="form-control first-name" ng-model="user.firstname" placeholder="First Name">
+    <input class="form-control last-name" ng-model="user.lastname" placeholder="Last Name">
+    <input class="form-control email-address" ng-model="user.emailaddress" placeholder="Email">
+    <input class="form-control password" ng-model="user.password" placeholder="Password">
+    <input class="form-control password" ng-model="user.password" placeholder="Confirm Password">
+    <button class="btn btn-primary" ng-click="signup()">Sign Up</button>
+  </div>
+
+
+
+</body>
+</html>

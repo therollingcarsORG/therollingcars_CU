@@ -13,6 +13,10 @@ app.get('/', function(req, res) {
     res.sendfile('./public/views/index.html');
 });
 
+app.get('/view2', function(req, res) {
+    res.sendfile('./public/views/view2.html');
+});
+
 app.get('/contactlist', function (req, res) {
   console.log('I received a GET request');
 

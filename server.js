@@ -1,58 +1,59 @@
-// MEAN Stack RESTful API Tutorial - Contact List App
+// MEAN Stack RESTful API - Rolling Cars App
 
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
-var db = mongojs('contactlist', ['contactlist']);
+var db = mongojs('inventory', ['inventory']);
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-    res.sendfile('./public/views/index.html');
+    res.sendfile('./public/views/inventory.html');
 });
 
 app.get('/view2', function(req, res) {
     res.sendfile('./public/views/view2.html');
 });
 
-app.get('/contactlist', function (req, res) {
-  console.log('I received a GET request');
-
-  db.contactlist.find(function (err, docs) {
-    console.log(docs);
+app.get('/inventory', function (req, res) {
+  console.log('I received an inventory GET request');
+  console.log(res);
+  db.inventory.find(function (err, docs) {
+    console.log(err);
     res.json(docs);
   });
 });
 
-app.post('/contactlist', function (req, res) {
+app.post('/inventory', function (req, res) {
   console.log(req.body);
-  db.contactlist.insert(req.body, function(err, doc) {
+  db.inventory.insert(req.body, function(err, doc) {
+    console.log("helllooooo");
     res.json(doc);
   });
 });
 
-app.delete('/contactlist/:id', function (req, res) {
+app.delete('/inventory/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
-  db.contactlist.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.inventory.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
     res.json(doc);
   });
 });
 
-app.get('/contactlist/:id', function (req, res) {
+app.get('/inventory/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
-  db.contactlist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.inventory.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
     res.json(doc);
   });
 });
 
-app.put('/contactlist/:id', function (req, res) {
+app.put('/inventory/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.name);
-  db.contactlist.findAndModify({
+  db.inventory.findAndModify({
     query: {_id: mongojs.ObjectId(id)},
     update: {$set: {name: req.body.name, email: req.body.email, number: req.body.number}},
     new: true}, function (err, doc) {

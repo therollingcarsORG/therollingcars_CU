@@ -69,8 +69,14 @@ app.get('/login', function (req, res) {
 
 app.get('/signup', function (req, res) {
   console.log('I received a signup page GET request');
-  console.log(res);
   res.sendfile('./public/views/signup.html');
+});
+
+app.post('/signup', function (req, res) {
+  console.log(req.body);
+  db.users.insert(req.body, function(err, doc) {
+    res.json(doc);
+  });
 });
 
 var server = app.listen(3000, function () {

@@ -13,7 +13,7 @@
 <script src="dist/js/app.min.js"></script>
 <script src='src/js/controllers/loginController.js'></script>
 
-<!-- Special CSS -->
+<!-- View-specific CSS -->
 <link href="/src/css/login.css" rel="stylesheet" type="text/css">
 
   <title>Login</title>
@@ -24,7 +24,7 @@
     <h1>The Rolling Cars</h1>
     <h2>Login</h2>
     <input class="form-control email-address" ng-model="user.emailaddress" placeholder="Email">
-    <input class="form-control password" ng-model="user.password" placeholder="Password">
+    <input class="form-control password" ng-model="user.password" placeholder="Password" type="password">
     <button class="btn btn-primary" ng-click="login()">Submit</button>
   </div>
 

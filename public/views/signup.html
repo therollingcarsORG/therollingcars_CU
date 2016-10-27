@@ -13,6 +13,9 @@
 <script src="dist/js/app.min.js"></script>
 <script src='src/js/controllers/signupController.js'></script>
 
+<!-- View-specific CSS -->
+<link href="/src/css/signup.css" rel="stylesheet" type="text/css">
+
   <title>Sign Up</title>
 </head>
 <body>
@@ -23,8 +26,8 @@
     <input class="form-control first-name" ng-model="user.firstname" placeholder="First Name">
     <input class="form-control last-name" ng-model="user.lastname" placeholder="Last Name">
     <input class="form-control email-address" ng-model="user.emailaddress" placeholder="Email">
-    <input class="form-control password" ng-model="user.password" placeholder="Password">
-    <input class="form-control password" ng-model="user.password" placeholder="Confirm Password">
+    <input class="form-control password" ng-model="user.password" placeholder="Password" type="password">
+    <input class="form-control password" ng-model="user.password" placeholder="Confirm Password" type="password">
     <button class="btn btn-primary" ng-click="signup()">Sign Up</button>
   </div>
 

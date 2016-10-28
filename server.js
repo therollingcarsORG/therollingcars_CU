@@ -79,6 +79,34 @@ app.post('/signup', function (req, res) {
   });
 });
 
+
+
+
+// Partial Experiment
+
+app.get('/partials', function(req, res) {
+    res.sendfile('./public/views/partials/partials.html');
+});
+
+app.get('/partial-home.html', function(req, res) {
+    res.sendfile('./public/views/partials/partial-home.html');
+});
+
+app.get('/partial-home-list.html', function(req, res) {
+    res.sendfile('./public/views/partials/partial-home-list.html');
+});
+
+app.get('/partial-about.html', function(req, res) {
+    res.sendfile('./public/views/partials/partial-about.html');
+});
+
+app.get('/table-data.html', function(req, res) {
+    res.sendfile('./public/views/partials/table-data.html');
+});
+
+// End Partial Experiment
+
+
 var server = app.listen(3000, function () {
   var port = server.address().port;
   console.log('Example app listening at port %s', port);

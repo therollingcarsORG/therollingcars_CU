@@ -19,9 +19,7 @@ app.get('/view2', function(req, res) {
 
 app.get('/inventory', function (req, res) {
   console.log('I received an inventory GET request');
-  console.log(res);
   db.inventory.find(function (err, docs) {
-    console.log(err);
     res.json(docs);
   });
 });
@@ -52,10 +50,10 @@ app.get('/inventory/:id', function (req, res) {
 
 app.put('/inventory/:id', function (req, res) {
   var id = req.params.id;
-  console.log(req.body.name);
+  console.log(req.body.make + " " + req.body.model);
   db.inventory.findAndModify({
     query: {_id: mongojs.ObjectId(id)},
-    update: {$set: {name: req.body.name, email: req.body.email, number: req.body.number}},
+    update: {$set: {make: req.body.make, model: req.body.model, miles: req.body.miles, year: req.body.year, color: req.body.color, price: req.body.price, cost: req.body.cost}},
     new: true}, function (err, doc) {
       res.json(doc);
     }
@@ -109,7 +107,7 @@ app.get('/table-data.html', function(req, res) {
 
 var server = app.listen(3000, function () {
   var port = server.address().port;
-  console.log('Example app listening at port %s', port);
+  console.log('App listening at port %s', port);
 });
 
 module.exports = server;

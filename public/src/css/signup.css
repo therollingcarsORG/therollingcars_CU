@@ -4,12 +4,12 @@
 	align-items: center;
 }
 
-.form-control {
+.signup-field {
 	margin-top: 20px;
-	width: 300px;
+	width: 200px;
 }
 
-.btn {
-	margin-top: 20px;
+.signup-button {
+	margin: 20px 0 50px 0;
 	width: 300px;
 }

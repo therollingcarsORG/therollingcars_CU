@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
-var db = mongojs('inventory', ['inventory']);
+var db = mongojs('inventory', ['inventory','users']);
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public'));
@@ -70,14 +70,28 @@ app.get('/signup', function (req, res) {
   res.sendfile('./public/views/signup.html');
 });
 
-app.post('/signup', function (req, res) {
+app.post('/users', function (req, res) {
+  console.log('I received a users POST request');
   console.log(req.body);
   db.users.insert(req.body, function(err, doc) {
     res.json(doc);
   });
 });
 
+app.get('/users', function (req, res) {
+  console.log('I received a users GET request');
+  db.users.find(function (err, docs) {
+    res.json(docs);
+  });
+});
 
+app.delete('/users/:id', function (req, res) {
+  var id = req.params.id;
+  console.log('I received a users DELETE request');
+  db.users.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
 
 
 // Partial Experiment

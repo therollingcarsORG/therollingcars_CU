@@ -2,6 +2,9 @@
 
 angular.module('loginApp', []).controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
 
-  console.log("Inside login controller");
+  $scope.login = function() {
+
+	// PERFORM AUTHENTICATION CHECK
+};
 
 }]);

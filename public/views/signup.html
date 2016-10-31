@@ -18,42 +18,44 @@
 <!-- View-specific CSS -->
 <link href="/src/css/signup.css" rel="stylesheet" type="text/css">
   
-  <div class="container" ng-controller="signupCtrl">
-    <h1>The Rolling Cars</h1>
-    <h2>Sign Up</h2>
-    <input class="form-control signup-field" ng-model="user.firstname" placeholder="First Name">
-    <input class="form-control signup-field" ng-model="user.lastname" placeholder="Last Name">
-    <input class="form-control signup-field" ng-model="user.emailaddress" placeholder="Email Address">
-    <input class="form-control signup-field" ng-model="user.password" placeholder="Password" type="password">
-    <input class="form-control signup-field" ng-model="user.confirmpassword" placeholder="Confirm Password" type="password">
-    <button class="btn btn-primary signup-button" ng-click="signUp()">Sign Up</button>
-
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>First Name</th>         
-          <th>Last Name</th>
-          <th>Email Address</th>
-          <th>Password</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="user in users">
-          <td>{{user.firstname}}</td>
-          <td>{{user.lastname}}</td>
-          <td>{{user.emailaddress}}</td>
-          <td>{{user.password}}</td>
-          <td><button class="btn btn-danger remove-button" ng-click="remove(user._id)">Remove</button></td>
-        </tr>
-      </tbody>
-    </table>
-
+<div class="container" ng-controller="signupCtrl">
+  
+  <div class="nav">
+    <a href="/"><button class="btn btn-link home-button">Back to Home</button></a> |
+    <a href="/login"><button class="btn btn-link login-button">Login</button></a>
   </div>
 
+  <h1>The Rolling Cars</h1>
+  <h2>Sign Up</h2>
+  <input class="form-control signup-field" ng-model="user.firstname" placeholder="First Name">
+  <input class="form-control signup-field" ng-model="user.lastname" placeholder="Last Name">
+  <input class="form-control signup-field" ng-model="user.emailaddress" placeholder="Email Address">
+  <input class="form-control signup-field" ng-model="user.password" placeholder="Password" type="password">
+  <input class="form-control signup-field" ng-model="user.confirmpassword" placeholder="Confirm Password" type="password">
+  <button class="btn btn-primary signup-button" ng-click="signUp()">Sign Up</button>
 
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>         
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Password</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users">
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.emailaddress}}</td>
+        <td>{{user.password}}</td>
+        <td><button class="btn btn-danger remove-button" ng-click="remove(user._id)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
 
+</div>
 
 
 </body>

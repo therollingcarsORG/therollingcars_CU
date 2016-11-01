@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
-var db = mongojs('inventory', ['inventory','users']);
+var db = mongojs('inventory', ['inventory','users','employees']);
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public'));
@@ -59,6 +59,58 @@ app.put('/inventory/:id', function (req, res) {
     }
   );
 });
+
+/* Employees section */
+//todo: we need to understand how to launch the sections calling just employees
+app.get('/goemployees', function (req, res) {
+  console.log('I received a employees page GET request');
+  //res.sendfile('./public/views/employees.html');//this is deprecated from 4.8
+  res.sendFile(__dirname + '/public/views/employees.html');
+});
+
+app.get('/employees', function (req, res) {
+  console.log('I received an employees GET request');
+  db.employees.find(function (err, docs) {
+    res.json(docs);
+  });
+});
+
+app.post('/employees', function (req, res) {
+  console.log(req.body);
+  db.employees.insert(req.body, function(err, doc) {
+    console.log("inserting an employee");
+    res.json(doc);
+  });
+});
+
+app.delete('/employees/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  db.employees.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
+app.get('/employees/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  db.employees.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
+app.put('/employees/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(req.body.firstName + " " + req.body.lastName);
+  db.employees.findAndModify({
+    query: {_id: mongojs.ObjectId(id)},
+    update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress}},
+    new: true}, function (err, doc) {
+      res.json(doc);
+    }
+  );
+});
+/* End Employees section */
 
 app.get('/login', function (req, res) {
   console.log('I received a login page GET request');

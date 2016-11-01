@@ -16,10 +16,14 @@ npm start					// start a server
 
 
 This has some experimental codes working with the framework, will hook up with backend soon  
-> localhost:3000/partials  
+> localhost:3000/partials
+
 Some experimental code using shared model between controllers and views
+
 > see file /services/SharedModel.js, /controllers/BtmCtrl.js, and /views/index.html  
+
 More experimental code, will smash together with other experiments to get a good outline 
+
 > localhost:3000/angularTest  
 
 

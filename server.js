@@ -95,6 +95,8 @@ app.delete('/users/:id', function (req, res) {
 
 
 // Partial Experiment
+// Basically hijacking home dir, this isn't good practice only temporary
+// will clean up routers with correct urls
 
 app.get('/partials', function(req, res) {
     res.sendfile('./public/views/partials/partials.html');
@@ -117,6 +119,16 @@ app.get('/table-data.html', function(req, res) {
 });
 
 // End Partial Experiment
+
+
+
+// Angular Tutorial Experiment
+
+app.get('/angularTest', function(req, res) {
+    res.sendfile('./public/views/protolist/index.html');
+});
+
+// End Angular Tutorial Experiment
 
 
 var server = app.listen(3000, function () {

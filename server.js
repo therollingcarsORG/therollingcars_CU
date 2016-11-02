@@ -182,6 +182,14 @@ app.get('/angularTest', function(req, res) {
 
 // End Angular Tutorial Experiment
 
+// Combo experiment
+
+app.get('/prodTest', function(req, res) {
+    res.sendfile('./public/views/comboProd/partials.html');
+});
+
+// Combo experiment
+
 
 var server = app.listen(3000, function () {
   var port = server.address().port;

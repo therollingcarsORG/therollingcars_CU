@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+           <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="views/comboProd/protolist/app.css" />
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="src/js/controllers/comboProd.js"></script>
+
+
+    <script src="views/comboProd/protolist/core/core.module.js"></script>
+    <script src="views/comboProd/protolist/core/checkmark/checkmark.filter.js"></script>
+    <script src="views/comboProd/protolist/core/phone/phone.module.js"></script>
+    <script src="views/comboProd/protolist/core/phone/phone.service.js"></script>
+    <script src="views/comboProd/protolist/phone-list/phone-list.module.js"></script>
+    <script src="views/comboProd/protolist/phone-list/phone-list.component.js"></script>
+    <script src="views/comboProd/protolist/phone-detail/phone-detail.module.js"></script>
+    <script src="views/comboProd/protolist/phone-detail/phone-detail.component.js"></script>
+
+
+    <style>
+        .navbar { border-radius:0; }
+    </style>
+
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp">
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">The Rolling Cars</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="phones">Showroom</a></li>
+    </ul>
+</nav>
+
+<!-- MAIN CONTENT -->
+<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+<div class="container">
+    <div ui-view autoscroll='false'></div>
+</div>
+
+<div class="text-center">
+    <p>GitHub: <a href="https://github.com/larrylzhao/therollingcars" target="_blank">TheRollingCars </a></p>
+</div>
+
+</body>
+</html>

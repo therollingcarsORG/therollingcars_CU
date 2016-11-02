@@ -27,6 +27,9 @@ More experimental code, will smash together with other experiments to get a good
 > localhost:3000/angularTest  
 
 
+Starting to combine into production like code:
+
+> localhost:3000/prodTest
 
 
 README TEST BELOW - we should update as we go along

@@ -39,14 +39,22 @@
 
 <!-- NAVIGATION -->
 <nav class="navbar navbar-inverse" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="#">The Rolling Cars</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a ui-sref="home">Home</a></li>
-        <li><a ui-sref="about">About</a></li>
-        <li><a ui-sref="phones">Showroom</a></li>
-    </ul>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://github.com/larrylzhao/therollingcars" target="_blank">The Rolling Cars</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="home">Home</a></li>
+                <li><a ui-sref="about">About</a></li>
+                <li><a ui-sref="phones">Showroom</a></li>
+                <li><a ui-sref="employee">Employee</a></li>
+            </ul>
+             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+   </div>
 </nav>
 
 <!-- MAIN CONTENT -->
@@ -55,9 +63,8 @@
     <div ui-view autoscroll='false'></div>
 </div>
 
-<div class="text-center">
-    <p>GitHub: <a href="https://github.com/larrylzhao/therollingcars" target="_blank">TheRollingCars </a></p>
 </div>
+
 
 </body>
 </html>

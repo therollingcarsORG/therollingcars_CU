@@ -52,6 +52,35 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         .state('phoneId', {
             url: '/phones/:phoneTag',
             template: '<phone-detail></phone-detail>'
+        })
+
+        // Employees =================================
+        .state('employee', {
+            url: '/employee',
+            templateUrl: 'views/comboProd/protoemployee/partial-employee.html'
+        })
+
+        .state('employee.inventory', {
+            url: '/inventory',
+            templateUrl: 'views/comboProd/protoemployee/partial-employee-inventory.html',
+            controller: function($scope) {
+                $scope;
+            }
+        })
+
+        .state('employee.customers', {
+            url: '/customers',
+            templateUrl: 'views/comboProd/protoemployee/partial-employee-customers.html'
+        })
+
+        .state('employee.employees', {
+            url: '/employees',
+            templateUrl: 'views/comboProd/protoemployee/partial-employee-employees.html'
+        })
+
+        .state('employee.sales', {
+            url: '/sales',
+            templateUrl: 'views/comboProd/protoemployee/partial-employee-sales.html'
         });
     
 });

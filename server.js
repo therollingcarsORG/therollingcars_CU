@@ -148,7 +148,7 @@ app.delete('/users/:id', function (req, res) {
 // Combo experiment
 
 app.get('/prodTest', function(req, res) {
-    res.sendfile('./public/views/comboProd/partials.html');
+    res.sendfile('./public/comboProd/partials.html');
 });
 
 // Combo experiment

@@ -11,7 +11,7 @@ describe('phoneList', function() {
 
     beforeEach(inject(function($componentController, _$httpBackend_) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('views/comboProd/protolist/phones/phones.json')
+      $httpBackend.expectGET('comboProd/protolist/phones/phones.json')
                   .respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
 
       ctrl = $componentController('phoneList');

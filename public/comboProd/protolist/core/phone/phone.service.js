@@ -4,7 +4,7 @@ angular.
   module('core.phone').
   factory('Phone', ['$resource',
     function($resource) {
-      return $resource('views/comboProd/protolist/phones/:phoneId.json', {}, {
+      return $resource('comboProd/protolist/phones/:phoneId.json', {}, {
         query: {
           method: 'GET',
           params: {phoneId: 'phones'},

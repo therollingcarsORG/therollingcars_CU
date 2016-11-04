@@ -4,7 +4,7 @@
 angular.
   module('phoneDetail').
   component('phoneDetail', {
-    templateUrl: 'views/comboProd/protolist/phone-detail/phone-detail.template.html',
+    templateUrl: 'comboProd/protolist/phone-detail/phone-detail.template.html',
     controller: ['$stateParams', 'Phone',
       function PhoneDetailController($stateParams, Phone) {
         var self = this;

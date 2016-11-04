@@ -11,13 +11,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'views/comboProd/partial-home.html'
+            templateUrl: 'comboProd/partial-home.html'
         })
         
         // nested list with custom controller
         .state('home.list', {
             url: '/list',
-            templateUrl: 'views/comboProd/partial-home-list.html',
+            templateUrl: 'comboProd/partial-home-list.html',
             controller: function($scope) {
                 $scope.cars = ['Ford Mustang', 'Chevrolet Camaro', 'Nissan Frontier'];
             }
@@ -33,10 +33,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         .state('about', {
             url: '/about',
             views: {
-                '': { templateUrl: 'views/comboProd/partial-about.html' },
+                '': { templateUrl: 'comboProd/partial-about.html' },
                 'columnOne@about': { template: 'Another template can go here!' },
                 'columnTwo@about': { 
-                    templateUrl: 'views/comboProd/table-data.html',
+                    templateUrl: 'comboProd/table-data.html',
                     controller: 'carController'
                 }
             }
@@ -57,12 +57,12 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // Employees =================================
         .state('employee', {
             url: '/employee',
-            templateUrl: 'views/comboProd/protoemployee/partial-employee.html'
+            templateUrl: 'comboProd/protoemployee/partial-employee.html'
         })
 
         .state('employee.inventory', {
             url: '/inventory',
-            templateUrl: 'views/comboProd/protoemployee/partial-employee-inventory.html',
+            templateUrl: 'comboProd/protoemployee/partial-employee-inventory.html',
             controller: function($scope) {
                 $scope;
             }
@@ -70,17 +70,17 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
         .state('employee.customers', {
             url: '/customers',
-            templateUrl: 'views/comboProd/protoemployee/partial-employee-customers.html'
+            templateUrl: 'comboProd/protoemployee/partial-employee-customers.html'
         })
 
         .state('employee.employees', {
             url: '/employees',
-            templateUrl: 'views/comboProd/protoemployee/partial-employee-employees.html'
+            templateUrl: 'comboProd/protoemployee/partial-employee-employees.html'
         })
 
         .state('employee.sales', {
             url: '/sales',
-            templateUrl: 'views/comboProd/protoemployee/partial-employee-sales.html'
+            templateUrl: 'comboProd/protoemployee/partial-employee-sales.html'
         });
     
 });

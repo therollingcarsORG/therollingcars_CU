@@ -1,6 +1,6 @@
 // public/src/js/controllers/controller.js
 
-angular.module('MainCtrl', []).controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('InvntryCtrl', []).controller('TopCtrl', ['$scope', '$http', function($scope, $http) {
 
   console.log("Hello World from controller");
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'phoneDetail', 'phoneList']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'phoneDetail', 'phoneList', 'myInventoryApp']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     
@@ -62,15 +62,15 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
         .state('employee.inventory', {
             url: '/inventory',
-            templateUrl: 'comboProd/protoemployee/partial-employee-inventory.html',
-            controller: function($scope) {
-                $scope;
-            }
+            templateUrl: 'comboProd/protoemployee/inventory/partial-employee-inventory.html'
         })
 
         .state('employee.customers', {
             url: '/customers',
-            templateUrl: 'comboProd/protoemployee/partial-employee-customers.html'
+            templateUrl: 'comboProd/protoemployee/partial-employee-customers.html',
+            controller: function($scope) {
+                $scope;
+            }
         })
 
         .state('employee.employees', {

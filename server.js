@@ -145,43 +145,6 @@ app.delete('/users/:id', function (req, res) {
   });
 });
 
-
-// Partial Experiment
-// Basically hijacking home dir, this isn't good practice only temporary
-// will clean up routers with correct urls
-
-app.get('/partials', function(req, res) {
-    res.sendfile('./public/views/partials/partials.html');
-});
-
-app.get('/partial-home.html', function(req, res) {
-    res.sendfile('./public/views/partials/partial-home.html');
-});
-
-app.get('/partial-home-list.html', function(req, res) {
-    res.sendfile('./public/views/partials/partial-home-list.html');
-});
-
-app.get('/partial-about.html', function(req, res) {
-    res.sendfile('./public/views/partials/partial-about.html');
-});
-
-app.get('/table-data.html', function(req, res) {
-    res.sendfile('./public/views/partials/table-data.html');
-});
-
-// End Partial Experiment
-
-
-
-// Angular Tutorial Experiment
-
-app.get('/angularTest', function(req, res) {
-    res.sendfile('./public/views/protolist/index.html');
-});
-
-// End Angular Tutorial Experiment
-
 // Combo experiment
 
 app.get('/prodTest', function(req, res) {

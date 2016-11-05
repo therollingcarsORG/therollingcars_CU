@@ -11,13 +11,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'comboProd/partial-home.html'
+            templateUrl: 'partial-home.html'
         })
         
         // nested list with custom controller
         .state('home.list', {
             url: '/list',
-            templateUrl: 'comboProd/partial-home-list.html',
+            templateUrl: 'partial-home-list.html',
             controller: function($scope) {
                 $scope.cars = ['Ford Mustang', 'Chevrolet Camaro', 'Nissan Frontier'];
             }
@@ -33,10 +33,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         .state('about', {
             url: '/about',
             views: {
-                '': { templateUrl: 'comboProd/partial-about.html' },
+                '': { templateUrl: 'partial-about.html' },
                 'columnOne@about': { template: 'Another template can go here!' },
                 'columnTwo@about': { 
-                    templateUrl: 'comboProd/table-data.html',
+                    templateUrl: 'table-data.html',
                     controller: 'carController'
                 }
             }
@@ -57,17 +57,17 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // Employees =================================
         .state('employee', {
             url: '/employee',
-            templateUrl: 'comboProd/protoemployee/partial-employee.html'
+            templateUrl: 'protoemployee/partial-employee.html'
         })
 
         .state('employee.inventory', {
             url: '/inventory',
-            templateUrl: 'comboProd/protoemployee/inventory/partial-employee-inventory.html'
+            templateUrl: 'protoemployee/inventory/partial-employee-inventory.html'
         })
 
         .state('employee.customers', {
             url: '/customers',
-            templateUrl: 'comboProd/protoemployee/partial-employee-customers.html',
+            templateUrl: 'protoemployee/partial-employee-customers.html',
             controller: function($scope) {
                 $scope;
             }
@@ -75,13 +75,24 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
         .state('employee.employees', {
             url: '/employees',
-            templateUrl: 'comboProd/protoemployee/partial-employee-employees.html'
+            templateUrl: 'protoemployee/partial-employee-employees.html'
         })
 
         .state('employee.sales', {
             url: '/sales',
-            templateUrl: 'comboProd/protoemployee/partial-employee-sales.html'
+            templateUrl: 'protoemployee/partial-employee-sales.html'
+        })
+
+
+        .state('account', {
+            url: '/account',
+            templateUrl: 'login/account/index.html',
+            controller: 'Account.IndexController',
+            controllerAs: 'vm',
+            data: { activeTab: 'account' }
         });
+
+        ;
     
 });
 
@@ -105,21 +116,3 @@ routerApp.controller('carController', function($scope) {
     ];
     
 });
-
-
-angular.
-  module('routerApp').
-  config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
-      $locationProvider.hashPrefix('!');
-
-      $routeProvider.
-        when('/phones', {
-          template: '<phone-list></phone-list>'
-        }).
-        when('/phones/:phoneId', {
-          template: '<phone-detail></phone-detail>'
-        }).
-        otherwise('/phones');
-    }
-  ]);

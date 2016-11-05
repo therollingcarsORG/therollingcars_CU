@@ -20,7 +20,7 @@ describe('Phone', function() {
   // Instantiate the service and "train" `$httpBackend` before each test
   beforeEach(inject(function(_$httpBackend_, _Phone_) {
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('comboProd/protolist/phones/phones.json').respond(phonesData);
+    $httpBackend.expectGET('protolist/phones/phones.json').respond(phonesData);
 
     Phone = _Phone_;
   }));
@@ -31,7 +31,7 @@ describe('Phone', function() {
     $httpBackend.verifyNoOutstandingRequest();
   });
 
-  it('should fetch the phones data from `comboProd/protolist/phones/phones.json`', function() {
+  it('should fetch the phones data from `protolist/phones/phones.json`', function() {
     var phones = Phone.query();
 
     expect(phones).toEqual([]);

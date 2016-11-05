@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+           <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="protolist/app.css" />
+
+    <link href="login/app-content/app.css" rel="stylesheet" />
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="/src/js/controllers/comboProd.js"></script>
+
+
+    <script src="protolist/core/core.module.js"></script>
+    <script src="protolist/core/checkmark/checkmark.filter.js"></script>
+    <script src="protolist/core/phone/phone.module.js"></script>
+    <script src="protolist/core/phone/phone.service.js"></script>
+    <script src="protolist/phone-list/phone-list.module.js"></script>
+    <script src="protolist/phone-list/phone-list.component.js"></script>
+    <script src="protolist/phone-detail/phone-detail.module.js"></script>
+    <script src="protolist/phone-detail/phone-detail.component.js"></script>
+
+
+    <script src="/src/js/services/SharedModel.js"></script>
+    <script src="/src/js/services/TestService.js"></script>
+
+    <script src="protoemployee/inventory/BtmCtrl.js"></script>
+    <script src="protoemployee/inventory/inventoryCtrl.js"></script>
+    <script src="protoemployee/inventory/app.js"></script>
+
+
+    <script src="login/app.js"></script>
+    <script src="login/app-services/user.service.js"></script>
+    <script src="login/app-services/flash.service.js"></script>
+    <script src="login/account/index.controller.js"></script>
+   
+    
+    <style>
+        .navbar { border-radius:0; }
+    </style>
+
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp">
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://github.com/larrylzhao/therollingcars" target="_blank">The Rolling Cars</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="home">Home</a></li>
+                <li><a ui-sref="about">About</a></li>
+                <li><a ui-sref="phones">Showroom</a></li>
+             
+                <li><a ui-sref="employee">Employee</a></li>
+                <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+            </ul>
+             <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login" target="_self">Logout</a></li>
+            </ul>
+        </div>
+        <div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
+   </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+<div class="container">
+    <div ui-view autoscroll='false'></div>
+</div>
+
+</div>
+
+
+</body>
+</html>

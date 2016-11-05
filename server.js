@@ -1,10 +1,13 @@
 // MEAN Stack RESTful API - Rolling Cars App
-
+require('rootpath')();
 var express = require('express');
+var session = require('express-session');
 var app = express();
 var mongojs = require('mongojs');
 var db = mongojs('inventory', ['inventory','users','employees','contactlist']);
 var bodyParser = require('body-parser');
+var expressJwt = require('express-jwt');
+var config = require('config.json');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -112,7 +115,7 @@ app.put('/employees/:id', function (req, res) {
 });
 /* End Employees section */
 
-app.get('/login', function (req, res) {
+app.get('/login1', function (req, res) {
   console.log('I received a login page GET request');
   res.sendfile('./public/views/login.html');
 });
@@ -159,9 +162,11 @@ app.delete('/users/:id', function (req, res) {
 // Combo experiment
 
   // opener page
+  /*
   app.get('/prodTest', function(req, res) {
       res.sendfile('./public/comboProd/partials.html');
   });
+  */
 
   // Comm with DB
 
@@ -209,6 +214,32 @@ app.delete('/users/:id', function (req, res) {
           }
         );
       });
+
+  // Auth
+
+    app.set('view engine', 'ejs');
+    app.set('views', __dirname + '/auth/views');
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+    app.use(session({ secret: config.secret, resave: false, saveUninitialized: true }));
+
+    // use JWT auth to secure the api
+    app.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
+
+    // routes
+    app.use('/login', require('./auth/controllers/login.controller'));
+    app.use('/register', require('./auth/controllers/register.controller'));
+    app.use('/publicAuth', require('./auth/controllers/app.controller'));
+    app.use('/api/users', require('./auth/controllers/api/users.controller'));
+
+    // make '/app' default route
+    
+    /*
+    app.get('/prodLevel', function (req, res) {
+        return res.redirect('/app');
+    });
+    */
+    
 
 // End Combo experiment
 // END !!!!!! Do not Modify Please !!!!!!

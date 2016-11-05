@@ -10,12 +10,12 @@ describe('phoneDetail', function() {
     var $httpBackend, ctrl;
     var xyzPhoneData = {
       name: 'phone xyz',
-      images: ['comboProd/protolist/image/url1.png', 'protolist/image/url2.png']
+      images: ['protolist/image/url1.png', 'protolist/image/url2.png']
     };
 
     beforeEach(inject(function($componentController, _$httpBackend_, $routeParams) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('comboProd/protolist/phones/xyz.json').respond(xyzPhoneData);
+      $httpBackend.expectGET('protolist/phones/xyz.json').respond(xyzPhoneData);
 
       $routeParams.phoneId = 'xyz';
 

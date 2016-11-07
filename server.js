@@ -8,6 +8,7 @@ var db = mongojs('inventory', ['inventory','users','employees','contactlist']);
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
+var validateInputs = require('public/src/js/tools/dataValidationBackend.js');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -80,10 +81,14 @@ app.get('/employees', function (req, res) {
 
 app.post('/employees', function (req, res) {
   console.log(req.body);
-  db.employees.insert(req.body, function(err, doc) {
+	if ( validateEmployeesInputData(req) ){
+		  db.employees.insert(req.body, function(err, doc) {
     console.log("inserting an employee");
     res.json(doc);
   });
+	} else {
+		console.log('Data validation failed!!!');
+	}
 });
 
 app.delete('/employees/:id', function (req, res) {
@@ -113,6 +118,18 @@ app.put('/employees/:id', function (req, res) {
     }
   );
 });
+
+var validateEmployeesInputData = function(req){
+	console.log("Backend validation of the input data");
+	console.log(typeof validateInputs.nodeValidateString);
+	if (!validateInputs.nodeValidateString(req.body.firstName, 2, 20, "first name")){ return false; }
+	if (!validateInputs.nodeValidateString(req.body.lastName, 2, 20, "last name")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.employeeNumber, 1, 6, "employee number")){ return false; }
+	// add check if we have another employee with the same number
+	if (!validateInputs.nodeValidatePhoneNumber(req.body.phoneNumber)){ return false; }
+	if (!validateInputs.nodeValidateEmailAddress(req.body.emailAddress)){ return false; }
+	return true;
+};
 /* End Employees section */
 
 app.get('/login1', function (req, res) {

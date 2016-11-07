@@ -5,7 +5,6 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
   console.log("inventory controller");
 
   var refresh = function() {
-    console.log("help pelase");
     $http.get('/inventory').success(function(response) {
       console.log("I got the data I requested");
       $scope.inventory = response;
@@ -17,10 +16,12 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 
   $scope.addVehicle = function() {
     console.log($scope.vehicle);
-    $http.post('/inventory', $scope.vehicle).success(function(response) {
-      console.log(response);
-      refresh();
-    });
+		if( validateInputData() === true ) {
+			$http.post('/inventory', $scope.vehicle).success(function(response) {
+        console.log(response);
+        refresh();
+      });
+		};
   };
 
   $scope.remove = function(id) {
@@ -39,13 +40,27 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 
   $scope.update = function() {
     console.log($scope.vehicle._id);
-    $http.put('/inventory/' + $scope.vehicle._id, $scope.vehicle).success(function(response) {
-      refresh();
-    });
+		if( validateInputData() === true ) {
+			$http.put('/inventory/' + $scope.vehicle._id, $scope.vehicle).success(function(response) {
+        refresh();
+      });
+		};
   };
 
   $scope.deselect = function() {
     $scope.vehicle = "";
   };
+	
+	var validateInputData = function(){
+		console.log("Validating input data");
+		if (!validateString($scope.vehicle.make, 2, 20, "make")){ return false; }
+		if (!validateString($scope.vehicle.model, 2, 20, "model")){ return false; }
+		if (!validateNumber($scope.vehicle.miles, 1, 9, "miles")){ return false; }
+		if (!validateNumber($scope.vehicle.year, 4, 4, "miles")){ return false; }
+		if (!validateString($scope.vehicle.color, 2, 20, "color")){ return false; }
+		if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ return false; }
+		if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ return false; }
+		return true;
+	};
 
 }]);

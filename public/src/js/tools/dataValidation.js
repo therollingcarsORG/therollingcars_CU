@@ -1,25 +1,3 @@
-//var module = {};
-
-//console.log('dataValidation');
-
-/*module.exports = {
-	  foo: function () {
-    // whatever
-  },
-	nodeValidateString: function() {
-		return validateString(args);
-	},
-	nodeValidateNumber: function() {
-		return validateNumber(args)
-	},
-	nodeValidatePhoneNumber: function() {
-		return validatePhoneNumber(args)
-	},
-	nodeValidateEmailAddress: function() {
-		return validateEmailAddress(args)
-	}
-}*/
-
 var validateString = function(inputText, minLength, maxLength, inputTextName){
 	var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
 	return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z]+$/, customAlertMessage);

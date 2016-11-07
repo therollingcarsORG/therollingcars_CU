@@ -21,6 +21,7 @@ app.get('/view2', function(req, res) {
     res.sendfile('./public/views/view2.html');
 });
 
+/* Inventory Section */
 app.get('/inventory', function (req, res) {
   console.log('I received an inventory GET request');
   db.inventory.find(function (err, docs) {
@@ -30,10 +31,13 @@ app.get('/inventory', function (req, res) {
 
 app.post('/inventory', function (req, res) {
   console.log(req.body);
-  db.inventory.insert(req.body, function(err, doc) {
-    console.log("helllooooo");
-    res.json(doc);
-  });
+	if ( validateInventoryInputData(req) ){
+	  db.inventory.insert(req.body, function(err, doc) {
+    	res.json(doc);
+  	});
+	} else {
+		console.log('Data validation failed!!!');
+	}
 });
 
 app.delete('/inventory/:id', function (req, res) {
@@ -55,17 +59,31 @@ app.get('/inventory/:id', function (req, res) {
 app.put('/inventory/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.make + " " + req.body.model);
-  db.inventory.findAndModify({
-    query: {_id: mongojs.ObjectId(id)},
-    update: {$set: {make: req.body.make, model: req.body.model, miles: req.body.miles, year: req.body.year, color: req.body.color, price: req.body.price, cost: req.body.cost}},
-    new: true}, function (err, doc) {
-      res.json(doc);
-    }
-  );
+	if ( validateInventoryInputData(req) ){
+	  db.inventory.findAndModify({
+    	query: {_id: mongojs.ObjectId(id)},
+    	update: {$set: {make: req.body.make, model: req.body.model, miles: req.body.miles, year: req.body.year, color: req.body.color, price: req.body.price, cost: req.body.cost}},
+    	new: true}, function (err, doc) { res.json(doc); }
+  	);
+	} else {
+		console.log('Data validation failed!!!');
+	};
 });
 
-/* Employees section */
-//todo: we need to understand how to launch the sections calling just employees
+var validateInventoryInputData = function(req){
+	console.log("Backend validation of the inventory input data");
+	if (!validateInputs.nodeValidateString(req.body.make, 2, 20, "make")){ return false; }
+	if (!validateInputs.nodeValidateString(req.body.model, 2, 20, "model")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.miles, 1, 9, "miles")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.vehicle.year, 4, 4, "miles")){ return false; }
+	if (!validateInputs.nodeValidateString(req.body.color, 2, 20, "color")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.vehicle.price, 1, 9, "price")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.vehicle.cost, 1, 9, "cost")){ return false; }
+	return true;
+};
+/* End Inventory Section */
+
+/* Employees Section */
 app.get('/goemployees', function (req, res) {
   console.log('I received a employees page GET request');
   //res.sendfile('./public/views/employees.html');//this is deprecated from 4.8
@@ -82,13 +100,13 @@ app.get('/employees', function (req, res) {
 app.post('/employees', function (req, res) {
   console.log(req.body);
 	if ( validateEmployeesInputData(req) ){
-		  db.employees.insert(req.body, function(err, doc) {
-    console.log("inserting an employee");
-    res.json(doc);
-  });
+		db.employees.insert(req.body, function(err, doc) {
+      console.log("inserting an employee");
+      res.json(doc);
+    });
 	} else {
 		console.log('Data validation failed!!!');
-	}
+	};
 });
 
 app.delete('/employees/:id', function (req, res) {
@@ -110,18 +128,19 @@ app.get('/employees/:id', function (req, res) {
 app.put('/employees/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.firstName + " " + req.body.lastName);
-  db.employees.findAndModify({
-    query: {_id: mongojs.ObjectId(id)},
-    update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress}},
-    new: true}, function (err, doc) {
-      res.json(doc);
-    }
-  );
+	if ( validateEmployeesInputData(req) ){
+		db.employees.findAndModify({
+      query: {_id: mongojs.ObjectId(id)},
+      update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress}},
+      new: true}, function (err, doc) { res.json(doc); }
+    );
+	} else {
+		console.log('Data validation failed!!!');
+	};
 });
 
 var validateEmployeesInputData = function(req){
-	console.log("Backend validation of the input data");
-	console.log(typeof validateInputs.nodeValidateString);
+	console.log("Backend validation of the employees input data");
 	if (!validateInputs.nodeValidateString(req.body.firstName, 2, 20, "first name")){ return false; }
 	if (!validateInputs.nodeValidateString(req.body.lastName, 2, 20, "last name")){ return false; }
 	if (!validateInputs.nodeValidateNumber(req.body.employeeNumber, 1, 6, "employee number")){ return false; }
@@ -130,7 +149,7 @@ var validateEmployeesInputData = function(req){
 	if (!validateInputs.nodeValidateEmailAddress(req.body.emailAddress)){ return false; }
 	return true;
 };
-/* End Employees section */
+/* End Employees Section */
 
 app.get('/login1', function (req, res) {
   console.log('I received a login page GET request');
@@ -274,7 +293,3 @@ var server = app.listen(3000, function () {
 });
 
 module.exports = server;
-
-//app.listen(3000);
-
-console.log("Server running on port 3000");

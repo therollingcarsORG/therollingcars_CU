@@ -75,10 +75,10 @@ var validateInventoryInputData = function(req){
 	if (!validateInputs.nodeValidateString(req.body.make, 2, 20, "make")){ return false; }
 	if (!validateInputs.nodeValidateString(req.body.model, 2, 20, "model")){ return false; }
 	if (!validateInputs.nodeValidateNumber(req.body.miles, 1, 9, "miles")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.vehicle.year, 4, 4, "miles")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.year, 4, 4, "year")){ return false; }
 	if (!validateInputs.nodeValidateString(req.body.color, 2, 20, "color")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.vehicle.price, 1, 9, "price")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.vehicle.cost, 1, 9, "cost")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.price, 1, 9, "price")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.cost, 1, 9, "cost")){ return false; }
 	return true;
 };
 /* End Inventory Section */

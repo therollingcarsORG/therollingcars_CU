@@ -56,7 +56,7 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 		if (!validateString($scope.vehicle.make, 2, 20, "make")){ return false; }
 		if (!validateString($scope.vehicle.model, 2, 20, "model")){ return false; }
 		if (!validateNumber($scope.vehicle.miles, 1, 9, "miles")){ return false; }
-		if (!validateNumber($scope.vehicle.year, 4, 4, "miles")){ return false; }
+		if (!validateNumber($scope.vehicle.year, 4, 4, "year")){ return false; }
 		if (!validateString($scope.vehicle.color, 2, 20, "color")){ return false; }
 		if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ return false; }
 		if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ return false; }

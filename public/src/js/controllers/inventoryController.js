@@ -16,7 +16,8 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 
   $scope.addVehicle = function() {
     console.log($scope.vehicle);
-		if( validateInputData() === true ) {
+    $scope.validateInputData();
+		if( $scope.valid === true ) {
 			$http.post('/inventory', $scope.vehicle).success(function(response) {
         console.log(response);
         refresh();
@@ -40,7 +41,8 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 
   $scope.update = function() {
     console.log($scope.vehicle._id);
-		if( validateInputData() === true ) {
+		$scope.validateInputData();
+    if( $scope.valid === true ) {
 			$http.put('/inventory/' + $scope.vehicle._id, $scope.vehicle).success(function(response) {
         refresh();
       });
@@ -51,16 +53,16 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
     $scope.vehicle = "";
   };
 	
-	var validateInputData = function(){
+	$scope.validateInputData = function(){
 		console.log("Validating input data");
-		if (!validateString($scope.vehicle.make, 2, 20, "make")){ return false; }
-		if (!validateString($scope.vehicle.model, 2, 20, "model")){ return false; }
-		if (!validateNumber($scope.vehicle.miles, 1, 9, "miles")){ return false; }
-		if (!validateNumber($scope.vehicle.year, 4, 4, "year")){ return false; }
-		if (!validateString($scope.vehicle.color, 2, 20, "color")){ return false; }
-		if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ return false; }
-		if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ return false; }
-		return true;
+    $scope.valid = true;
+		if (!validateString($scope.vehicle.make, 2, 20, "make")){ $scope.valid = false; }
+		if (!validateString($scope.vehicle.model, 2, 20, "model")){ $scope.valid = false; }
+		if (!validateNumber($scope.vehicle.miles, 1, 9, "miles")){ $scope.valid = false; }
+		if (!validateNumber($scope.vehicle.year, 4, 4, "year")){ $scope.valid = false; }
+		if (!validateString($scope.vehicle.color, 2, 20, "color")){ $scope.valid = false; }
+		if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ $scope.valid = false; }
+		if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ $scope.valid = false; }
 	};
 
 }]);

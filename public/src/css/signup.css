@@ -4,6 +4,10 @@
 	align-items: center;
 }
 
+.nav {
+	align-self: flex-end;
+}
+
 .signup-field {
 	margin-top: 20px;
 	width: 200px;

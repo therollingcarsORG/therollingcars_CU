@@ -1,6 +1,6 @@
 'use strict';
 
-var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'phoneDetail', 'phoneList', 'myInventoryApp']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'phoneDetail', 'vehicleShowroom', 'myInventoryApp']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     

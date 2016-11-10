@@ -21,6 +21,12 @@
 <body>
   
   <div class="container" ng-controller="loginCtrl">
+
+	  <div class="nav">
+	    <a href="/"><button class="btn btn-link home-button">Back to Home</button></a> |
+	    <a href="/signup"><button class="btn btn-link signup-button">Sign Up</button></a>
+	  </div>
+
     <h1>The Rolling Cars</h1>
     <h2>Login</h2>
     <input class="form-control email-address" ng-model="user.emailaddress" placeholder="Email">

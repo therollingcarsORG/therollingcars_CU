@@ -1,31 +1,43 @@
 
+  
   <div ng-controller="TopCtrl">
-    <h1>Contact List App</h1>
+    <h1>Manage Vehicle Invetory</h1>
 
     <table class="table">
       <thead>
         <tr>
-          <th>Name</th>         
-          <th>Email</th>
-          <th>Number</th>
-          <th>Action</th>
+          <th>Make</th>         
+          <th>Model</th>
+          <th>Model Year</th>
+          <th>Ext. Color</th>
+          <th>Price</th>
+          <th>Invoice Cost</th>
+          <th>Miles</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><input class="form-control" ng-model="contact.name"></td>
-          <td><input class="form-control" ng-model="contact.email"></td>
-          <td><input class="form-control" ng-model="contact.number"></td>
-          <td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
+          <td><input class="form-control" ng-model="vehicle.make"></td>
+          <td><input class="form-control" ng-model="vehicle.model"></td>
+          <td><input class="form-control" ng-model="vehicle.year"></td>
+          <td><input class="form-control" ng-model="vehicle.color"></td>
+          <td><input class="form-control" ng-model="vehicle.price"></td>
+          <td><input class="form-control" ng-model="vehicle.cost"></td>
+          <td><input class="form-control" ng-model="vehicle.miles"></td>
+          <td><button class="btn btn-primary" ng-click="addVehicle()">Add Vehicle</button></td>
           <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
         </tr>
-        <tr ng-repeat="contact in contactlist">
-          <td>{{contact.name}}</td>
-          <td>{{contact.email}}</td>
-          <td>{{contact.number}}</td>
-          <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
-          <td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+        <tr ng-repeat="vehicle in inventory">
+          <td>{{vehicle.make}}</td>
+          <td>{{vehicle.model}}</td>
+          <td>{{vehicle.year}}</td>
+          <td>{{vehicle.color}}</td>
+          <td>{{vehicle.price}}</td>
+          <td>{{vehicle.cost}}</td>
+          <td>{{vehicle.miles}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(vehicle._id)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(vehicle._id)">Edit</button></td>
         </tr>
       </tbody>
     </table>

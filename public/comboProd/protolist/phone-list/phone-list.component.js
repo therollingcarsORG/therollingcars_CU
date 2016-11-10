@@ -1,13 +1,13 @@
 'use strict';
 
-// Register `phoneList` component, along with its associated controller and template
+// Register `vehicleShowroom` component, along with its associated controller and template
 angular.
-  module('phoneList').
+  module('vehicleShowroom').
   component('phoneList', {
     templateUrl: 'protolist/phone-list/phone-list.template.html',
     controller: ['Phone',
-      function PhoneListController(Phone) {
-        this.phones = Phone.query();
+      function ShowroomController(Vehicle) {
+        this.vehicles = Vehicle.fetch();
         this.orderProp = 'age';
       }
     ]

@@ -1,0 +1,6 @@
+{
+  // global variables
+  "globals": {
+    "angular"   : false
+  }
+}

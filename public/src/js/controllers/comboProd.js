@@ -1,9 +1,8 @@
-'use strict';
-
 var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'phoneDetail', 'vehicleShowroom', 'myInventoryApp']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
-    
+    'use strict';
+	
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -69,7 +68,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/customers',
             templateUrl: 'protoemployee/partial-employee-customers.html',
             controller: function($scope) {
-                $scope;
+                //$scope; //this is to be completed I guess
             }
         })
 
@@ -91,13 +90,11 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: 'vm',
             data: { activeTab: 'account' }
         });
-
-        ;
-    
 });
 
 routerApp.controller('carController', function($scope) {
-    
+    'use strict';
+	
     $scope.message = 'test';
    
     $scope.cars = [

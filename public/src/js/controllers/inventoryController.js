@@ -22,7 +22,7 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
         console.log(response);
         refresh();
       });
-		};
+		}
   };
 
   $scope.remove = function(id) {
@@ -46,7 +46,7 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 			$http.put('/inventory/' + $scope.vehicle._id, $scope.vehicle).success(function(response) {
         refresh();
       });
-		};
+		}
   };
 
   $scope.deselect = function() {

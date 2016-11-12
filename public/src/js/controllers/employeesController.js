@@ -17,7 +17,8 @@ angular.module('employeesApp', []).controller('employeesCtrl', ['$scope', '$http
 
   $scope.addEmployee = function() {
     console.log($scope.employee);
-    if( validateInputData() === true ) {
+		$scope.validateInputData();
+    if( $scope.valid === true ) {
       $http.post('/employees', $scope.employee).success(function(response) {
         console.log(response);
         refresh();
@@ -41,7 +42,8 @@ angular.module('employeesApp', []).controller('employeesCtrl', ['$scope', '$http
 
   $scope.update = function() {
     console.log($scope.employee._id);
-		if( validateInputData() === true ) {
+		$scope.validateInputData();
+		if( $scope.valid === true ) {
 			$http.put('/employees/' + $scope.employee._id, $scope.employee).success(function(response) {
       refresh();
     });
@@ -52,16 +54,15 @@ angular.module('employeesApp', []).controller('employeesCtrl', ['$scope', '$http
     $scope.employee = "";
   };
 	
-	var validateInputData = function(){
-		//need to improve user experience
+	$scope.validateInputData = function(){
+		$scope.valid = true;
 		console.log("Validating input data");
-		if (!validateString($scope.employee.firstName, 2, 20, "first name")){ return false; }
-		if (!validateString($scope.employee.lastName, 2, 20, "last name")){ return false; }
-		if (!validateNumber($scope.employee.employeeNumber, 1, 6, "employee number")){ return false; }
+		if (!validateString($scope.employee.firstName, 2, 20, "first name")){ $scope.valid = false; }
+		if (!validateString($scope.employee.lastName, 2, 20, "last name")){ $scope.valid = false; }
+		if (!validateNumber($scope.employee.employeeNumber, 1, 6, "employee number")){ $scope.valid = false; }
 		// add check if we have another employee with the same number
-		if (!validatePhoneNumber($scope.employee.phoneNumber)){ return false; }
-		if (!validateEmailAddress($scope.employee.emailAddress)){ return false; }
-		return true;
+		if (!validatePhoneNumber($scope.employee.phoneNumber)){ $scope.valid = false; }
+		if (!validateEmailAddress($scope.employee.emailAddress)){ $scope.valid = false; }
 	};
     
 }]);

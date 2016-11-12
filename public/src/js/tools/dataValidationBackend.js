@@ -1,11 +1,12 @@
 module.exports = {
 	nodeValidateString: function(inputText, minLength, maxLength, inputTextName) {
+		var customAlertMessage = '';
 		if ((inputTextName === 'make') || (inputTextName === 'model')) {
-			var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
+			customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
 			return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z0-9 ]+$/, customAlertMessage);
 		}
 		else {
-			var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
+			customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
 			return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z]+$/, customAlertMessage);
 		}
 	},
@@ -23,11 +24,11 @@ module.exports = {
 		//var re = /\S+@\S+\.\S+/; //paranoid mode off
 		return validateRegex(inputEmailAddress, 7, 100, re, customAlertMessage);
 	}
-}
+};
 
 var validateRegex = function(inputData, minLength, maxLength, regex, customAlertMessage){
 	if (!inputData || inputData.length < minLength || inputData.length > maxLength || !regex.test(inputData)){
-		if (customAlertMessage && customAlertMessage != ''){
+		if (customAlertMessage && customAlertMessage !== ''){
 			console.log(customAlertMessage);
 		} else {
 			console.log('I can not validate the input data');
@@ -35,4 +36,4 @@ var validateRegex = function(inputData, minLength, maxLength, regex, customAlert
 		return false;
 	}
 	return true;
-}
+};

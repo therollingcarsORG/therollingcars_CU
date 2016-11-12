@@ -1,10 +1,11 @@
 var validateString = function(inputText, minLength, maxLength, inputTextName){
+	var customAlertMessage = '';
 	if ((inputTextName === 'make') || (inputTextName === 'model')) {
-		var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
+		customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
 		return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z0-9 ]+$/, customAlertMessage);
 	}
 	else {
-		var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
+		customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
 		return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z]+$/, customAlertMessage);
 	}
 };
@@ -28,7 +29,7 @@ var validateEmailAddress = function(inputEmailAddress){
 
 var validateRegex = function(inputData, minLength, maxLength, regex, customAlertMessage){
 	if (!inputData || inputData.length < minLength || inputData.length > maxLength || !regex.test(inputData)){
-		if (customAlertMessage && customAlertMessage != ''){
+		if (customAlertMessage && customAlertMessage !== ''){
 			alert(customAlertMessage);
 		} else {
 			alert('I can not validate the input data');
@@ -36,4 +37,4 @@ var validateRegex = function(inputData, minLength, maxLength, regex, customAlert
 		return false;
 	}
 	return true;
-}
+};

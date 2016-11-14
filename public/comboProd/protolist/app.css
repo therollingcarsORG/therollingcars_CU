@@ -4,27 +4,31 @@ h1 {
   border-bottom: 1px solid gray;
 }
 
-/* View: Phone list */
-.phones {
+/* View: Vehicle list */
+.vehicles {
   list-style: none;
 }
 
-.phones li {
+.vehicles li {
   clear: both;
-  height: 115px;
-  padding-top: 15px;
+  height: 100px;
+  padding-top: 10px;
+  margin: 0;
 }
 
 .thumb {
   float: left;
   height: 100px;
-  margin: -0.5em 1em 1.5em 0;
-  padding-bottom: 1em;
-  width: 100px;
+  padding: 5px 10px 5px 5px;
+  width: 120px;
 }
 
-/* View: Phone detail */
-.phone {
+.table {
+  padding: 0;
+}
+
+/* View: Vehicle detail */
+.vehicle {
   background-color: white;
   border: 1px solid black;
   float: left;
@@ -35,18 +39,18 @@ h1 {
   width: 400px;
 }
 
-.phone-thumbs {
+.vehicle-thumbs {
   list-style: none;
   margin: 0;
 }
 
-.phone-thumbs img {
+.vehicle-thumbs img {
   height: 100px;
   padding: 1em;
   width: 100px;
 }
 
-.phone-thumbs li {
+.vehicle-thumbs li {
   background-color: white;
   border: 1px solid black;
   cursor: pointer;

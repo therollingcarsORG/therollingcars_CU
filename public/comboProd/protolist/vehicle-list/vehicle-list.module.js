@@ -1,4 +1,4 @@
 'use strict';
 
 // Define the `vehicleShowroom` module
-angular.module('vehicleShowroom', ['core.phone']);
+angular.module('vehicleShowroom', ['core.vehicle']);

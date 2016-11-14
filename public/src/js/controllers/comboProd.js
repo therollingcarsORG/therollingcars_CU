@@ -1,4 +1,4 @@
-var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'phoneDetail', 'vehicleShowroom', 'myInventoryApp']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ngRoute', 'core', 'vehicleDetail', 'vehicleShowroom', 'myInventoryApp']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     'use strict';
@@ -43,14 +43,14 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         })
 
         // Showroom =================================
-        .state('phones', {
-            url: '/phones',
-            template: '<phone-list></phone-list>'
+        .state('vehicles', {
+            url: '/vehicles',
+            template: '<vehicle-list></vehicle-list>'
         })
 
-        .state('phoneId', {
-            url: '/phones/:phoneTag',
-            template: '<phone-detail></phone-detail>'
+        .state('vehicleId', {
+            url: '/vehicles/:vehicleTag',
+            template: '<vehicle-detail></vehicle-detail>'
         })
 
         // Employees =================================

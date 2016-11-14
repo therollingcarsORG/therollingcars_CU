@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="protolist/app.css" />
 
+    <link rel="stylesheet" href="protoemployee/app.css" />
+
     <link href="login/app-content/app.css" rel="stylesheet" />
 
 
@@ -23,12 +25,12 @@
 
     <script src="protolist/core/core.module.js"></script>
     <script src="protolist/core/checkmark/checkmark.filter.js"></script>
-    <script src="protolist/core/phone/phone.module.js"></script>
-    <script src="protolist/core/phone/phone.service.js"></script>
-    <script src="protolist/phone-list/phone-list.module.js"></script>
-    <script src="protolist/phone-list/phone-list.component.js"></script>
-    <script src="protolist/phone-detail/phone-detail.module.js"></script>
-    <script src="protolist/phone-detail/phone-detail.component.js"></script>
+    <script src="protolist/core/vehicle/vehicle.module.js"></script>
+    <script src="protolist/core/vehicle/vehicle.service.js"></script>
+    <script src="protolist/vehicle-list/vehicle-list.module.js"></script>
+    <script src="protolist/vehicle-list/vehicle-list.component.js"></script>
+    <script src="protolist/vehicle-detail/vehicle-detail.module.js"></script>
+    <script src="protolist/vehicle-detail/vehicle-detail.component.js"></script>
 
 
     <script src="/src/js/services/SharedModel.js"></script>
@@ -65,7 +67,7 @@
             <ul class="nav navbar-nav">
                 <li><a ui-sref="home">Home</a></li>
                 <li><a ui-sref="about">About</a></li>
-                <li><a ui-sref="phones">Showroom</a></li>
+                <li><a ui-sref="vehicles">Showroom</a></li>
              
                 <li><a ui-sref="employee">Employee</a></li>
                 <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>

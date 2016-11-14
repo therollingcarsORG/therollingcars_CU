@@ -151,49 +151,6 @@ var validateEmployeesInputData = function(req){
 };
 /* End Employees Section */
 
-app.get('/login1', function (req, res) {
-  console.log('I received a login page GET request');
-  res.sendfile('./public/views/login.html');
-});
-
-app.get('/signup', function (req, res) {
-  console.log('I received a signup page GET request');
-  res.sendfile('./public/views/signup.html');
-});
-
-app.post('/users', function (req, res) {
-  console.log('I received a users POST request');
-  console.log(req.body);
-  db.users.insert(req.body, function(err, doc) {
-    res.json(doc);
-  });
-});
-
-app.get('/users', function (req, res) {
-  console.log('I received a users GET request');
-  db.users.find(function (err, docs) {
-    res.json(docs);
-  });
-});
-
-app.delete('/users/:id', function (req, res) {
-  var id = req.params.id;
-  console.log('I received a users DELETE request');
-  db.users.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
-    res.json(doc);
-  });
-});
-
-
-
-
-
-
-
-
-
-
-
 // !!!!!! Do not Modify Please !!!!!!
 // Combo experiment
 

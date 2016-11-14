@@ -63,6 +63,7 @@ angular.module('inventoryApp', []).controller('inventoryCtrl', ['$scope', '$http
 		if (!validateString($scope.vehicle.color, 2, 20, "color")){ $scope.valid = false; }
 		if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ $scope.valid = false; }
 		if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ $scope.valid = false; }
+    if (!validateString($scope.vehicle.description, 0, 100, "description")){ $scope.valid = false; }
 	};
 
 }]);

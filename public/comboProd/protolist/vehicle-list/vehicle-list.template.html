@@ -21,16 +21,16 @@
 
       <!--Body content-->
 
-      <ul class="phones">
+      <ul class="vehicles">
         <li ng-repeat="vehicle in $ctrl.vehicles | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
-          <a ui-sref='phoneId({phoneTag: "{{vehicle._id}}" })'  class="thumb">
+          <a ui-sref='vehicleId({vehicleTag: "{{vehicle._id}}" })'  class="thumb">
             <img ng-src="img/golf.png" alt="{{vehicle.make}} {{vehicle.model}}" />
           </a>
-          <a  ui-sref='phoneId({phoneTag: "{{vehicle._id}}" })' >{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</a>
+          <a  ui-sref='vehicleId({vehicleTag: "{{vehicle._id}}" })' >{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</a>
           <p>${{vehicle.price}} &nbsp; | &nbsp;
           {{vehicle.miles}} miles <br>
-          Exterior Color: {{vehicle.color}}</p>
-          
+          Exterior Color: {{vehicle.color}} <br>
+          {{vehicle.description}} </p>
         </li>
       </ul>
 

@@ -1,0 +1,59 @@
+<!DOCTYPE>
+
+
+<html ng-app="customerViewApp">
+
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<script src='src/js/tools/dataValidation.js'></script>
+<script src='src/js/controllers/customerViewController.js'></script>
+  <title>Inventory</title>
+</head>
+<body>
+  
+  <div class="container" ng-controller="customerViewCtrl">
+    <h1>The Rolling Cars</h1>
+    <h2>Inventory Browse Page</h2>
+    <center><h3>Available Vehicle Options</h3></center>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Make</th>         
+          <th>Model</th>
+          <th>Miles</th>
+          <th>Year</th>
+          <th>Color</th>
+          <th>Price</th>
+          <th>Cost</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="vehicle in customersection">
+          <td>{{vehicle.make}}</td>
+          <td>{{vehicle.model}}</td>
+          <td>{{vehicle.miles}}</td>
+          <td>{{vehicle.year}}</td>
+          <td>{{vehicle.color}}</td>
+          <td>{{vehicle.price}}</td>
+          <td>{{vehicle.cost}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+
+
+</body>
+</html>
+

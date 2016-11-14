@@ -83,6 +83,85 @@ var validateInventoryInputData = function(req){
 };
 /* End Inventory Section */
 
+/* Customer View Section */
+
+app.get('/customersection', function (req, res) {
+  console.log('I received a customer page GET request');
+  res.sendfile('./public/views/customerSection.html');
+});
+
+app.get('/customerview', function (req, res) {
+  console.log('I received an inventory GET request');
+  db.inventory.find(function (err, docs) {
+    res.json(docs);
+  });
+});
+
+app.post('/customerview', function (req, res) {
+  console.log(req.body);
+  if ( validateInventoryInputData(req) ){
+    db.inventory.insert(req.body, function(err, doc) {
+      res.json(doc);
+    });
+  } else {
+    console.log('Data validation failed!!!');
+  }
+});
+
+app.delete('/customerview/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  db.inventory.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
+app.get('/customerview/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id);
+  db.inventory.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
+app.get('/customerview/:searchMake', function (req, res) {
+  var searchMake = req.params.make;
+  console.log(id);
+  db.inventory.find({make: searchMake}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
+app.put('/customerview/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(req.body.make + " " + req.body.model);
+  if ( validateInventoryInputData(req) ){
+    db.inventory.findAndModify({
+      query: {_id: mongojs.ObjectId(id)},
+      update: {$set: {make: req.body.make, model: req.body.model, miles: req.body.miles, year: req.body.year, color: req.body.color, price: req.body.price, cost: req.body.cost}},
+      new: true}, function (err, doc) { res.json(doc); }
+    );
+  } else {
+    console.log('Data validation failed!!!');
+  };
+});
+
+var validateInventoryInputData = function(req){
+  console.log("Backend validation of the inventory input data");
+  /* Commented to implement in second iteration where search features will be added.
+  if (!validateInputs.nodeValidateString(req.body.make, 2, 20, "make")){ return false; }
+  if (!validateInputs.nodeValidateString(req.body.model, 2, 20, "model")){ return false; }
+  if (!validateInputs.nodeValidateNumber(req.body.miles, 1, 9, "miles")){ return false; }
+  if (!validateInputs.nodeValidateNumber(req.body.year, 4, 4, "year")){ return false; }
+  if (!validateInputs.nodeValidateString(req.body.color, 2, 20, "color")){ return false; }
+  if (!validateInputs.nodeValidateNumber(req.body.price, 1, 9, "price")){ return false; }
+  if (!validateInputs.nodeValidateNumber(req.body.cost, 1, 9, "cost")){ return false; }
+  */
+  return true;
+};
+/* End Customer View Section */
+
+
 /* Employees Section */
 app.get('/goemployees', function (req, res) {
   console.log('I received a employees page GET request');

@@ -12,102 +12,11 @@
 
 <ul class="specs">
   <li>
-    <span>Availability and Networks</span>
-    <dl>
-      <dt>Availability</dt>
-      <dd ng-repeat="availability in $ctrl.vehicle.availability">{{availability}}</dd>
-    </dl>
+    <span>Vehicle Specificiations</span>
   </li>
+
   <li>
-    <span>Battery</span>
-    <dl>
-      <dt>Type</dt>
-      <dd>{{$ctrl.vehicle.battery.type}}</dd>
-      <dt>Talk Time</dt>
-      <dd>{{$ctrl.vehicle.battery.talkTime}}</dd>
-      <dt>Standby time (max)</dt>
-      <dd>{{$ctrl.vehicle.battery.standbyTime}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Storage and Memory</span>
-    <dl>
-      <dt>RAM</dt>
-      <dd>{{$ctrl.vehicle.storage.ram}}</dd>
-      <dt>Internal Storage</dt>
-      <dd>{{$ctrl.vehicle.storage.flash}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Connectivity</span>
-    <dl>
-      <dt>Network Support</dt>
-      <dd>{{$ctrl.vehicle.connectivity.cell}}</dd>
-      <dt>WiFi</dt>
-      <dd>{{$ctrl.vehicle.connectivity.wifi}}</dd>
-      <dt>Bluetooth</dt>
-      <dd>{{$ctrl.vehicle.connectivity.bluetooth}}</dd>
-      <dt>Infrared</dt>
-      <dd>{{$ctrl.vehicle.connectivity.infrared | checkmark}}</dd>
-      <dt>GPS</dt>
-      <dd>{{$ctrl.vehicle.connectivity.gps | checkmark}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Android</span>
-    <dl>
-      <dt>OS Version</dt>
-      <dd>{{$ctrl.vehicle.android.os}}</dd>
-      <dt>UI</dt>
-      <dd>{{$ctrl.vehicle.android.ui}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Size and Weight</span>
-    <dl>
-      <dt>Dimensions</dt>
-      <dd ng-repeat="dim in $ctrl.vehicle.sizeAndWeight.dimensions">{{dim}}</dd>
-      <dt>Weight</dt>
-      <dd>{{$ctrl.vehicle.sizeAndWeight.weight}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Display</span>
-    <dl>
-      <dt>Screen size</dt>
-      <dd>{{$ctrl.vehicle.display.screenSize}}</dd>
-      <dt>Screen resolution</dt>
-      <dd>{{$ctrl.vehicle.display.screenResolution}}</dd>
-      <dt>Touch screen</dt>
-      <dd>{{$ctrl.vehicle.display.touchScreen | checkmark}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Hardware</span>
-    <dl>
-      <dt>CPU</dt>
-      <dd>{{$ctrl.vehicle.hardware.cpu}}</dd>
-      <dt>USB</dt>
-      <dd>{{$ctrl.vehicle.hardware.usb}}</dd>
-      <dt>Audio / headphone jack</dt>
-      <dd>{{$ctrl.vehicle.hardware.audioJack}}</dd>
-      <dt>FM Radio</dt>
-      <dd>{{$ctrl.vehicle.hardware.fmRadio | checkmark}}</dd>
-      <dt>Accelerometer</dt>
-      <dd>{{$ctrl.vehicle.hardware.accelerometer | checkmark}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Camera</span>
-    <dl>
-      <dt>Primary</dt>
-      <dd>{{$ctrl.vehicle.camera.primary}}</dd>
-      <dt>Features</dt>
-      <dd>{{$ctrl.vehicle.camera.features.join(', ')}}</dd>
-    </dl>
-  </li>
-  <li>
-    <span>Additional Features</span>
-    <dd>{{$ctrl.vehicle.additionalFeatures}}</dd>
+    <span>Description</span>
+    <dd>{{$ctrl.vehicle.description}}</dd>
   </li>
 </ul>

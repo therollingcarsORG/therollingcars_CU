@@ -79,6 +79,7 @@ var validateInventoryInputData = function(req){
 	if (!validateInputs.nodeValidateString(req.body.color, 2, 20, "color")){ return false; }
 	if (!validateInputs.nodeValidateNumber(req.body.price, 1, 9, "price")){ return false; }
 	if (!validateInputs.nodeValidateNumber(req.body.cost, 1, 9, "cost")){ return false; }
+	if (!validateInputs.nodeValidateNumber(req.body.description, 0, 100, "description")){ return false; }
 	return true;
 };
 /* End Inventory Section */

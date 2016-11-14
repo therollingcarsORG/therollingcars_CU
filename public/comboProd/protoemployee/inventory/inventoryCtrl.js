@@ -63,7 +63,7 @@ document.head.appendChild(validation);
     if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ return false; }
     if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ return false; }
     if (!validateNumber($scope.vehicle.miles, 1, 9, "miles")){ return false; }
-    if (!validateString($scope.vehicle.description, 0, 100, "description")){ $scope.valid = false; }
+    if (!validateString($scope.vehicle.description, 0, 100, "description")){ return false; }
     console.log("Input data successfully validated.");
     return true;
   };

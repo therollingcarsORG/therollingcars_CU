@@ -15,7 +15,16 @@ document.head.appendChild(validation);
     });
   };
 
+  var loadUsers = function() {
+      $http.get('/users').success(function(response) {
+      console.log("Employees refreshed.");
+      $scope.users = response;
+      $scope.user = "";
+    });
+  };
+
   refresh();
+  loadUsers();
 
   $scope.addVehicle = function() {
     console.log($scope.vehicle);
@@ -53,6 +62,32 @@ document.head.appendChild(validation);
   $scope.deselect = function() {
     $scope.vehicle = "";
   };
+
+  // USER FUNCTIONS
+
+  $scope.makeEmployee = function(id) {
+    console.log("Switching customer to employee.");
+    $http.get('/users/' + id).success(function(response) {
+      $scope.user = response;
+      $scope.user.usertype = 'employee';
+      $http.put('/users/' + $scope.user._id, $scope.user).success(function(response) {
+        loadUsers();
+      });
+    });
+  };
+
+  $scope.makeCustomer = function(id) {
+    console.log("Switching employee to customer.");
+    $http.get('/users/' + id).success(function(response) {
+      $scope.user = response;
+      $scope.user.usertype = 'customer';
+      $http.put('/users/' + $scope.user._id, $scope.user).success(function(response) {
+        loadUsers();
+      });
+    });
+  };
+
+  // END USER FUNCTIONS
   
   var validateInputData = function(){
     console.log("Validating input data...");

@@ -77,6 +77,9 @@ function create(userParam) {
         // add hashed password to user object
         user.hash = bcrypt.hashSync(userParam.password, 10);
 
+        // set default user type to customer
+        user.usertype = 'customer'
+
         db.users.insert(
             user,
             function (err, doc) {

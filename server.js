@@ -139,6 +139,37 @@ app.put('/employees/:id', function (req, res) {
 	};
 });
 
+// USER SWITCHING FUNCTIONS
+
+app.get('/users', function (req, res) {
+  console.log('I received an users GET request');
+  db.users.find(function (err, docs) {
+    res.json(docs);
+  });
+});
+
+app.get('/users/:id', function (req, res) {
+  console.log('I received a single user GET request');
+  var id = req.params.id;
+  console.log(id);
+  db.users.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
+app.put('/users/:id', function (req, res) {
+  var id = req.params.id;
+  console.log('I received an users PUT request for ' + req.body.firstName + " " + req.body.lastName);
+    db.users.findAndModify({
+      query: {_id: mongojs.ObjectId(id)},
+      update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, username: req.body.username, usertype: req.body.usertype}},
+      new: true}, function (err, doc) { res.json(doc); }
+    );
+});
+
+
+
+
 var validateEmployeesInputData = function(req){
 	console.log("Backend validation of the employees input data");
 	if (!validateInputs.nodeValidateString(req.body.firstName, 2, 20, "first name")){ return false; }

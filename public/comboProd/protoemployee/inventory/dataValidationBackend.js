@@ -1,6 +1,6 @@
 module.exports = {
 	nodeValidateString: function(inputText, minLength, maxLength, inputTextName) {
-		if ((inputTextName === 'make') || (inputTextName === 'model')) {
+		if ((inputTextName === 'make') || (inputTextName === 'model') || (inputTextName === 'description')) {
 			var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
 			return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z0-9 ]+$/, customAlertMessage);
 		}

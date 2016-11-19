@@ -13,7 +13,8 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'partial-home.html'
+            templateUrl: 'partial-home.html',
+            data: { activeTab: 'home' }
         })
         
         // nested list with custom controller
@@ -41,14 +42,16 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                     templateUrl: 'table-data.html',
                     controller: 'carController'
                 }
-            }
+            },
+            data: { activeTab: 'about' }
             
         })
 
         // Showroom =================================
         .state('vehicles', {
             url: '/vehicles',
-            template: '<vehicle-list></vehicle-list>'
+            template: '<vehicle-list></vehicle-list>',
+            data: { activeTab: 'vehicles' }
         })
 
         .state('vehicleId', {
@@ -59,7 +62,8 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // Employees =================================
         .state('employee', {
             url: '/employee',
-            templateUrl: 'protoemployee/partial-employee.html'
+            templateUrl: 'protoemployee/partial-employee.html',
+            data: { activeTab: 'employee' }
         })
 
         .state('employee.inventory', {

@@ -13,9 +13,11 @@ var validateInputs = require('public/src/js/tools/dataValidationBackend.js');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
+/*
 app.get('/', function(req, res) {
     res.sendfile('./public/views/inventory.html');
 });
+*/
 
 app.get('/view2', function(req, res) {
     res.sendfile('./public/views/view2.html');
@@ -333,16 +335,15 @@ var validateEmployeesInputData = function(req){
     // routes
     app.use('/login', require('./auth/controllers/login.controller'));
     app.use('/register', require('./auth/controllers/register.controller'));
-    app.use('/publicAuth', require('./auth/controllers/app.controller'));
+    app.use('/app', require('./auth/controllers/app.controller'));
     app.use('/api/users', require('./auth/controllers/api/users.controller'));
 
     // make '/app' default route
     
-    /*
-    app.get('/prodLevel', function (req, res) {
+    app.get('/', function (req, res) {
         return res.redirect('/app');
     });
-    */
+    
     
 
 // End Combo experiment

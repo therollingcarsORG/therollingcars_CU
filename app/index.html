@@ -35,7 +35,7 @@
                 <li ng-class="{active: activeTab === 'about'}"><a ui-sref="about">About</a></li>
                 <li ng-class="{active: activeTab === 'vehicles'}"><a ui-sref="vehicles">Showroom</a></li>
              
-                <li ng-class="{active: activeTab === 'employee'}"><a ui-sref="employee">Employee</a></li>
+                <li ng-show="isEmployee" ng-class="{active: activeTab === 'employee'}"><a ui-sref="employee">Employee</a></li>
                 <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
             </ul>
              <ul class="nav navbar-nav navbar-right">

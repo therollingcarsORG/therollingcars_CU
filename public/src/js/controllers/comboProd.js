@@ -89,7 +89,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'protoemployee/partial-employee-sales.html'
         })
 
-
+        // Manage Account ==============================
         .state('account', {
             url: '/account',
             templateUrl: 'login/account/index.html',
@@ -127,6 +127,24 @@ function run($http, $rootScope, $window) {
    
      // add JWT token as default auth header
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
+
+
+    // THIS IS NOT SECURE AT ALL, MUST CHANGE, JUST FOR DEMO PURPOSES
+    // ng-show = "isEmployee" in index.html
+    // !!!!!!!!!!!!!!!!!! 
+    $http.get('/api/users/current').success(function(data)
+    {
+        if(data.usertype == "employee")
+        {
+            $rootScope.isEmployee = true;
+        }
+        else
+        {
+            $rootScope.isEmployee = false;
+        }
+    });
+    // !!!!!!!!!!!!!!!!!!
+
 
     // update active tab on state change
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

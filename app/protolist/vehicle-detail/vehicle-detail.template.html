@@ -1,22 +1,16 @@
-<img ng-src="{{$ctrl.mainImageUrl}}" class="vehicle" />
+<div class="vehicle-img-container">
+  <img ng-src="img/golf.png" alt="{{vehicle.make}} {{vehicle.model}}" class="vehicle-img"/>
+</div>
 
-<h1>{{$ctrl.vehicle.name}}</h1>
+<h1 class="detail-title">{{$ctrl.vehicle.year}} {{$ctrl.vehicle.make}} {{$ctrl.vehicle.model}}</h1>
+<h3 class="detail-subtitle">${{$ctrl.vehicle.price}}</h3>
 
 <p>{{$ctrl.vehicle.description}}</p>
 
-<ul class="vehicle-thumbs">
-  <li ng-repeat="img in $ctrl.vehicle.images">
-    <img ng-src="{{img}}" ng-click="$ctrl.setImage(img)" />
-  </li>
-</ul>
+<div class="spec-title">Vehicle Specificiations</div>
+<div class="specs">
+  <dd>Exterior Color: {{$ctrl.vehicle.color}}</dd>
+  <dd>Miles: {{$ctrl.vehicle.miles}}</dd>
+</div>
 
-<ul class="specs">
-  <li>
-    <span>Vehicle Specificiations</span>
-  </li>
-
-  <li>
-    <span>Description</span>
-    <dd>{{$ctrl.vehicle.description}}</dd>
-  </li>
-</ul>
+<a href="/app/#/vehicles"> Back to Showroom </a>

@@ -7,14 +7,9 @@ angular.
     templateUrl: 'protolist/vehicle-detail/vehicle-detail.template.html',
     controller: ['$stateParams', 'Vehicle',
       function VehicleDetailController($stateParams, Vehicle) {
-        var self = this;
-        self.vehicle = Vehicle.get({vehicleId: $stateParams.vehicleTag}, function(vehicle) {
-          self.setImage(vehicle.images[0]);
-        });
-
-        self.setImage = function setImage(imageUrl) {
-          self.mainImageUrl = imageUrl;
-        };
+        console.log("Fetched detail page for vehicleId: " + $stateParams.vehicleTag);
+        this.vehicle = Vehicle.get({vehicleId: $stateParams.vehicleTag});
+        // this.pricestring = this.vehicle.price.formatMoney(2, '.', ',');
       }
     ]
   });

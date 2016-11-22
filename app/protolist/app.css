@@ -1,9 +1,4 @@
 
-
-h1 {
-  border-bottom: 1px solid gray;
-}
-
 /* View: Vehicle list */
 .vehicles {
   list-style: none;
@@ -28,54 +23,42 @@ h1 {
 }
 
 /* View: Vehicle detail */
-.vehicle {
+
+.vehicle-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   border: 1px solid black;
   float: left;
   height: 400px;
   margin-bottom: 2em;
   margin-right: 3em;
-  padding: 2em;
-  width: 400px;
+  padding: 20px;
+  width: 720px;
 }
 
-.vehicle-thumbs {
-  list-style: none;
-  margin: 0;
-}
-
-.vehicle-thumbs img {
-  height: 100px;
-  padding: 1em;
-  width: 100px;
-}
-
-.vehicle-thumbs li {
+.vehicle-img {
   background-color: white;
   border: 1px solid black;
-  cursor: pointer;
-  display: inline-block;
-  margin: 1em;
+  height: 100%;
+}
+
+
+.detail-title {
+  margin: 20px 0 5px 0;
+}
+
+.detail-subtitle {
+  margin: 0 0 30px 0;
+}
+
+.spec-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 0 5px 0;
 }
 
 .specs {
-  clear: both;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.specs dt {
-  font-weight: bold;
-}
-
-.specs > li {
-  display: inline-block;
-  vertical-align: top;
-  width: 200px;
-}
-
-.specs > li > span {
-  font-size: 1.2em;
-  font-weight: bold;
+  padding: 0 0 20px 0;
 }

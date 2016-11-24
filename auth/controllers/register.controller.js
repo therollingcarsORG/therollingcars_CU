@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var router = express.Router();
 var request = require('request');
 var config = require('config.json');
@@ -23,7 +23,7 @@ router.post('/', function (req, res) {
                 error: response.body,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                username: req.body.username
+                emailAddress: req.body.emailAddress
             });
         }
 

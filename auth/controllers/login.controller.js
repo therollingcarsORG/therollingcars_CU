@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var router = express.Router();
 var request = require('request');
 var config = require('config.json');
@@ -26,7 +26,7 @@ router.post('/', function (req, res) {
         }
  
         if (!body.token) {
-            return res.render('login', { error: 'Username or password is incorrect', username: req.body.username });
+            return res.render('login', { error: 'emailAddress or password is incorrect', emailAddress: req.body.emailAddress });
         }
  
         // save JWT token in the session to make it available to the angular app

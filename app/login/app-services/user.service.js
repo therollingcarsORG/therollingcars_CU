@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
@@ -11,7 +11,7 @@
         service.GetCurrent = GetCurrent;
         service.GetAll = GetAll;
         service.GetById = GetById;
-        service.GetByUsername = GetByUsername;
+        service.GetByEmailAddress = GetByEmailAddress;
         service.Create = Create;
         service.Update = Update;
         service.Delete = Delete;
@@ -30,8 +30,8 @@
             return $http.get('/api/users/' + _id).then(handleSuccess, handleError);
         }
 
-        function GetByUsername(username) {
-            return $http.get('/api/users/' + username).then(handleSuccess, handleError);
+        function GetByEmailAddress(emailAddress) {
+            return $http.get('/api/users/' + emailAddress).then(handleSuccess, handleError);
         }
 
         function Create(user) {

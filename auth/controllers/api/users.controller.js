@@ -1,4 +1,4 @@
-﻿var config = require('config.json');
+var config = require('config.json');
 var express = require('express');
 var router = express.Router();
 var userService = require('auth/services/user.service');
@@ -13,7 +13,7 @@ router.delete('/:_id', deleteUser);
 module.exports = router;
 
 function authenticateUser(req, res) {
-    userService.authenticate(req.body.username, req.body.password)
+    userService.authenticate(req.body.emailAddress, req.body.password)
         .then(function (token) {
             if (token) {
                 // authentication successful

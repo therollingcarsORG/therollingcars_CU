@@ -1,4 +1,4 @@
-﻿var config = require('config.json');
+var config = require('config.json');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
@@ -17,10 +17,10 @@ service.delete = _delete;
 
 module.exports = service;
 
-function authenticate(username, password) {
+function authenticate(emailAddress, password) {
     var deferred = Q.defer();
 
-    db.users.findOne({ username: username }, function (err, user) {
+    db.users.findOne({ emailAddress: emailAddress }, function (err, user) {
         if (err) deferred.reject(err);
 
         if (user && bcrypt.compareSync(password, user.hash)) {
@@ -58,13 +58,13 @@ function create(userParam) {
 
     // validation
     db.users.findOne(
-        { username: userParam.username },
+        { emailAddress: userParam.emailAddress },
         function (err, user) {
             if (err) deferred.reject(err);
 
             if (user) {
-                // username already exists
-                deferred.reject('Username "' + userParam.username + '" is already taken');
+                // emailAddress already exists
+                deferred.reject('emailAddress "' + userParam.emailAddress + '" is already taken');
             } else {
                 createUser();
             }
@@ -99,16 +99,16 @@ function update(_id, userParam) {
     db.users.findById(_id, function (err, user) {
         if (err) deferred.reject(err);
 
-        if (user.username !== userParam.username) {
-            // username has changed so check if the new username is already taken
+        if (user.emailAddress !== userParam.emailAddress) {
+            // emailAddress has changed so check if the new emailAddress is already taken
             db.users.findOne(
-                { username: userParam.username },
+                { emailAddress: userParam.emailAddress },
                 function (err, user) {
                     if (err) deferred.reject(err);
 
                     if (user) {
-                        // username already exists
-                        deferred.reject('Username "' + req.body.username + '" is already taken')
+                        // emailAddress already exists
+                        deferred.reject('emailAddress "' + req.body.emailAddress + '" is already taken')
                     } else {
                         updateUser();
                     }
@@ -123,7 +123,7 @@ function update(_id, userParam) {
         var set = {
             firstName: userParam.firstName,
             lastName: userParam.lastName,
-            username: userParam.username,
+            emailAddress: userParam.emailAddress,
         };
 
         // update password if it was entered

@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var config = require('config.json');
 var validateInputs = require('public/src/js/tools/dataValidationBackend.js');
+var bcrypt = require('bcryptjs');
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -182,7 +183,10 @@ app.get('/employees', function (req, res) {
 app.post('/employees', function (req, res) {
   console.log(req.body);
 	if ( validateEmployeesInputData(req) ){
-		db.users.insert(req.body, function(err, doc) {
+      if(req.body.hash && req.body.hash !== ''){
+        req.body.hash = bcrypt.hashSync(req.body.hash, 10);
+      }
+      db.users.insert(req.body, function(err, doc) {
       console.log("inserting an employee");
       res.json(doc);
     });
@@ -211,11 +215,20 @@ app.put('/employees/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.firstName + " " + req.body.lastName);
 	if ( validateEmployeesInputData(req) ){
-		db.users.findAndModify({
-      query: {_id: mongojs.ObjectId(id)},
-      update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress}},
-      new: true}, function (err, doc) { res.json(doc); }
-    );
+      if(req.body.hash && req.body.hash !== ''){
+        req.body.hash = bcrypt.hashSync(req.body.hash, 10);
+        db.users.findAndModify({
+          query: {_id: mongojs.ObjectId(id)},
+          update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress, hash: req.body.hash}},
+          new: true}, function (err, doc) { res.json(doc); }
+        );
+      } else {
+        db.users.findAndModify({
+          query: {_id: mongojs.ObjectId(id)},
+          update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress}},
+          new: true}, function (err, doc) { res.json(doc); }
+        );
+      }
 	} else {
 		console.log('Data validation failed!!!');
 	};

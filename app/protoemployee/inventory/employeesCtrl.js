@@ -34,7 +34,8 @@ angular.module('employeesApp', []).controller('employeesCtrl', ['$scope', '$http
   $scope.edit = function(id) {
     console.log(id);
     $http.get('/employees/' + id).success(function(response) {
-      $scope.user = response;
+      $scope.user = response; 
+      $scope.user.hash = '';
     });
   };  
 

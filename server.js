@@ -166,15 +166,15 @@ var validateInventoryInputData = function(req){
 
 
 /* Employees Section */
-app.get('/goemployees', function (req, res) {
+/*app.get('/goemployees', function (req, res) {
   console.log('I received a employees page GET request');
   //res.sendfile('./public/views/employees.html');//this is deprecated from 4.8
   res.sendFile(__dirname + '/public/views/employees.html');
-});
+});*/
 
 app.get('/employees', function (req, res) {
   console.log('I received an employees GET request');
-  db.employees.find(function (err, docs) {
+  db.users.find(function (err, docs) {
     res.json(docs);
   });
 });
@@ -182,7 +182,7 @@ app.get('/employees', function (req, res) {
 app.post('/employees', function (req, res) {
   console.log(req.body);
 	if ( validateEmployeesInputData(req) ){
-		db.employees.insert(req.body, function(err, doc) {
+		db.users.insert(req.body, function(err, doc) {
       console.log("inserting an employee");
       res.json(doc);
     });
@@ -194,7 +194,7 @@ app.post('/employees', function (req, res) {
 app.delete('/employees/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
-  db.employees.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.users.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
     res.json(doc);
   });
 });
@@ -202,7 +202,7 @@ app.delete('/employees/:id', function (req, res) {
 app.get('/employees/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
-  db.employees.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  db.users.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
     res.json(doc);
   });
 });
@@ -211,7 +211,7 @@ app.put('/employees/:id', function (req, res) {
   var id = req.params.id;
   console.log(req.body.firstName + " " + req.body.lastName);
 	if ( validateEmployeesInputData(req) ){
-		db.employees.findAndModify({
+		db.users.findAndModify({
       query: {_id: mongojs.ObjectId(id)},
       update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, employeeNumber: req.body.employeeNumber, phoneNumber: req.body.phoneNumber, emailAddress: req.body.emailAddress}},
       new: true}, function (err, doc) { res.json(doc); }
@@ -260,6 +260,7 @@ var validateEmployeesInputData = function(req){
 	// add check if we have another employee with the same number
 	if (!validateInputs.nodeValidatePhoneNumber(req.body.phoneNumber)){ return false; }
 	if (!validateInputs.nodeValidateEmailAddress(req.body.emailAddress)){ return false; }
+    if (!validateInputs.nodeValidateListOfStrings(req.body.usertype, ['employee', 'customer'])){ return false; }
 	return true;
 };
 /* End Employees Section */

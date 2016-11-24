@@ -36,4 +36,13 @@ var validateRegex = function(inputData, minLength, maxLength, regex, customAlert
 		return false;
 	}
 	return true;
-}
+};
+
+var validateListOfStrings = function(inputText, stringsAllowed){
+  if (stringsAllowed.indexOf(inputText) == -1) {
+    alert ('The string selected is not included in the list: ' + stringsAllowed);
+    return false;
+  } else {
+    return true;
+  }
+};

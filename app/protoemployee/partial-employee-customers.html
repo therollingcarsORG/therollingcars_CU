@@ -1,5 +1,52 @@
- <h1>Customers</h1>
+ <h1>Users and Customers</h1>
       
     
           <p></p>
-          
+<div class="container-fluid" ng-controller="employeesCtrl">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>         
+        <th>Last Name</th>
+        <th>Employee #</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+        <th>Account Type</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input class="form-control" ng-model="user.firstName"></td>
+        <td><input class="form-control" ng-model="user.lastName"></td>
+        <td><input class="form-control" ng-model="user.employeeNumber"></td>
+        <td><input class="form-control" ng-model="user.phoneNumber"></td>
+        <td><input class="form-control" ng-model="user.emailAddress"></td>
+        <td>
+          <select class="form-control" name="singleSelect" ng-model="user.usertype">
+            <option value="employee">employee</option>
+            <option value="customer">customer</option>
+          </select>
+        </td>
+        <!--td><input class="form-control" ng-model="user.usertype"></td-->
+        <td><button class="btn btn-primary" ng-click="addUser()">Add User</button></td>
+        <td><button class="btn btn-info" ng-click="update()">Update</button></td>
+        <td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+      </tr>
+      <tr ng-repeat="user in users">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.employeeNumber}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.emailAddress}}</td>
+        <td>{{user.usertype}}</td>
+        <td><button class="btn btn-danger" ng-click="remove(user._id)">Remove</button></td>
+        <td><button class="btn btn-warning" ng-click="edit(user._id)">Edit</button></td>
+        <td><button class="btn btn-primary" ng-click="makeEmployee(user._id)" ng-if="user.usertype=='customer'">Make Employee</button>
+          <button class="btn btn-danger" ng-click="makeCustomer(user._id)" ng-if="user.usertype=='employee'">Make Customer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

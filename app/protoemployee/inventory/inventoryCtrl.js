@@ -4,7 +4,7 @@ angular.module('InvntryCtrl', []).controller('TopCtrl', ['$scope', '$http', func
 
 console.log("inventory controller");
 var validation = document.createElement('script');
-validation.src = '/comboProd/protoemployee/inventory/dataValidation.js';
+validation.src = 'protoemployee/inventory/dataValidation.js';
 document.head.appendChild(validation);
 
   var refresh = function() {
@@ -63,8 +63,8 @@ document.head.appendChild(validation);
     $scope.vehicle = "";
   };
 
-  // USER FUNCTIONS
-
+  // USER FUNCTIONS - moved to employeesCtrl.js
+/*
   $scope.makeEmployee = function(id) {
     console.log("Switching customer to employee.");
     $http.get('/users/' + id).success(function(response) {
@@ -86,7 +86,7 @@ document.head.appendChild(validation);
       });
     });
   };
-
+*/
   // END USER FUNCTIONS
   
   var validateInputData = function(){

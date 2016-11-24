@@ -244,7 +244,7 @@ app.put('/users/:id', function (req, res) {
   console.log('I received an users PUT request for ' + req.body.firstName + " " + req.body.lastName);
     db.users.findAndModify({
       query: {_id: mongojs.ObjectId(id)},
-      update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, emailAddress: req.body.emailAddress, usertype: req.body.usertype}},
+      update: {$set: {firstName: req.body.firstName, lastName: req.body.lastName, phoneNumber: req.body.phoneNumber, employeeNumber: req.body.employeeNumber, emailAddress: req.body.emailAddress, usertype: req.body.usertype}},
       new: true}, function (err, doc) { res.json(doc); }
     );
 });

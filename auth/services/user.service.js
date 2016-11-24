@@ -78,8 +78,11 @@ function create(userParam) {
         user.hash = bcrypt.hashSync(userParam.password, 10);
 
         // set default user type to customer
-        user.usertype = 'customer'
+        user.usertype = 'customer';
 
+        // set default employee number to 0
+        user.employeeNumber = '0';
+        
         db.users.insert(
             user,
             function (err, doc) {
@@ -123,7 +126,9 @@ function update(_id, userParam) {
         var set = {
             firstName: userParam.firstName,
             lastName: userParam.lastName,
-            emailAddress: userParam.emailAddress,
+            phoneNumber: userParam.phoneNumber,
+            employeeNumber: userParam.employeeNumber,
+            emailAddress: userParam.emailAddress
         };
 
         // update password if it was entered

@@ -8,6 +8,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
+        
     // register using api to maintain clean separation between layers
     request.post({
         url: config.apiUrl + '/users/register',
@@ -27,12 +28,15 @@ router.post('/', function (req, res) {
                 employeeNumber: req.body.employeeNumber,
                 emailAddress: req.body.emailAddress
             });
-        }
-
+        } 
+        
         // return to login page with success message
         req.session.success = 'Registration successful';
         return res.redirect('/login');
     });
+
 });
+
+
 
 module.exports = router;

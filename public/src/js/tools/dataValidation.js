@@ -1,3 +1,9 @@
+//this file is duplicated and we want to remove it, 
+//do not use it for current new development and get rid of if in the old classes
+//new file is /app/protoemployee/inventory/dataValidation.js
+//in the meantime this one must be an exact copy
+//thank you very much
+
 var validateString = function(inputText, minLength, maxLength, inputTextName){
 	var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
     if (minLength === 0 && (!inputText || inputText === '')){ return true; }
@@ -26,6 +32,12 @@ var validateEmailAddress = function(inputEmailAddress){
 	//var re = /\S+@\S+\.\S+/; //paranoid mode off
 	return validateRegex(inputEmailAddress, 7, 100, re, customAlertMessage);
 };
+
+var validatePassword = function(inputPassword, minLength, maxLength){
+    var customAlertMessage = "The password must be between " + minLength + " and " + maxLength + "chars, it can contain only letters and numbers and must have at least 1 number, 1 uppercase and 1 lowercase characters";
+    //we can use this if we want special chars /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{1,}$/
+    return validateRegex(inputPassword, minLength, maxLength, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{1,}$/, customAlertMessage);
+}
 
 var validateRegex = function(inputData, minLength, maxLength, regex, customAlertMessage){
 	if (!inputData || inputData.length < minLength || inputData.length > maxLength || !regex.test(inputData)){

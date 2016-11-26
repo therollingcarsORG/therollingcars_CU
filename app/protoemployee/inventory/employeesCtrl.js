@@ -53,17 +53,17 @@ angular.module('employeesApp', []).controller('employeesCtrl', ['$scope', '$http
     $scope.user = "";
   };
 	
-	$scope.validateInputData = function(){
-		$scope.valid = true;
-		console.log("Validating input data");
-		if (!validateString($scope.user.firstName, 2, 20, "first name")){ $scope.valid = false; }
-		if (!validateString($scope.user.lastName, 2, 20, "last name")){ $scope.valid = false; }
-		if (!validateNumber($scope.user.employeeNumber, 1, 6, "employee number")){ $scope.valid = false; }
-		// add check if we have another user with the same number
-		if (!validatePhoneNumber($scope.user.phoneNumber)){ $scope.valid = false; }
-		if (!validateEmailAddress($scope.user.emailAddress)){ $scope.valid = false; }
-        if (!validateListOfStrings($scope.user.usertype, ['employee', 'customer'])){ $scope.valid = false; }
-	};
+  $scope.validateInputData = function(){
+      $scope.valid = true;
+      console.log("Validating input data");
+      if (!validateString($scope.user.firstName, 2, 20, "first name")){ $scope.valid = false; }
+      if (!validateString($scope.user.lastName, 2, 20, "last name")){ $scope.valid = false; }
+      if (!validateNumber($scope.user.employeeNumber, 1, 6, "employee number")){ $scope.valid = false; }
+      // add check if we have another user with the same number
+      if (!validatePhoneNumber($scope.user.phoneNumber)){ $scope.valid = false; }
+      if (!validateEmailAddress($scope.user.emailAddress)){ $scope.valid = false; }
+      if (!validateListOfStrings($scope.user.usertype, ['employee', 'customer'])){ $scope.valid = false; }
+  };
     
     
       // USER FUNCTIONS

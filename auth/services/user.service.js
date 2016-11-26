@@ -6,6 +6,7 @@ var Q = require('q');
 var mongo = require('mongoskin');
 var db = mongo.db(config.connectionString, { native_parser: true });
 db.bind('users');
+var validateInputs = require('public/src/js/tools/dataValidationBackend.js');
 
 var service = {};
 
@@ -55,43 +56,50 @@ function getById(_id) {
 
 function create(userParam) {
     var deferred = Q.defer();
-
+    
     // validation
+    var rejectMessage = validateInputData(userParam);
+    if (rejectMessage !== 'success'){
+        deferred.reject(rejectMessage);
+    }
+    
     db.users.findOne(
         { emailAddress: userParam.emailAddress },
         function (err, user) {
-            if (err) deferred.reject(err);
-
+            if (err) {
+                deferred.reject(err);
+            }
+            
             if (user) {
                 // emailAddress already exists
                 deferred.reject('emailAddress "' + userParam.emailAddress + '" is already taken');
             } else {
                 createUser();
             }
-        });
-
-    function createUser() {
-        // set user object to userParam without the cleartext password
-        var user = _.omit(userParam, 'password');
-
-        // add hashed password to user object
-        user.hash = bcrypt.hashSync(userParam.password, 10);
-
-        // set default user type to customer
-        user.usertype = 'customer';
-
-        // set default employee number to 0
-        user.employeeNumber = '0';
         
+        });
+    
+    function createUser() {
+    // set user object to userParam without the cleartext password
+    var user = _.omit(userParam, 'password');
+
+    // add hashed password to user object
+    user.hash = bcrypt.hashSync(userParam.password, 10);
+
+    // set default user type to customer
+    user.usertype = 'customer';
+
+    // set default employee number to 0
+    user.employeeNumber = '0';
+
         db.users.insert(
-            user,
-            function (err, doc) {
-                if (err) deferred.reject(err);
-
-                deferred.resolve();
-            });
+        user,
+        function (err, doc) {
+            if (err) deferred.reject(err);
+            deferred.resolve();
+        });
     }
-
+    
     return deferred.promise;
 }
 
@@ -120,6 +128,8 @@ function update(_id, userParam) {
             updateUser();
         }
     });
+    
+    
 
     function updateUser() {
         // fields to update
@@ -162,3 +172,29 @@ function _delete(_id) {
 
     return deferred.promise;
 }
+
+// input data validation
+var validateInputData = function(user){
+    var inputDataErrorString = 'success';
+    var alertMessage = '';
+    console.log("Validation of the user input data...");
+    
+    alertMessage = validateInputs.nodeValidateString(user.firstName, 2, 20, "first name");
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    
+    alertMessage = validateInputs.nodeValidateString(user.lastName, 2, 20, "last name");
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    
+    alertMessage = validateInputs.nodeValidatePhoneNumber(user.phoneNumber);
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    
+    alertMessage = validateInputs.nodeValidateEmailAddress(user.emailAddress);
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    
+    alertMessage = validateInputs.nodeValidatePassword(user.password, 8, 20);
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }    
+
+    console.log("Input data successfully validated.");
+
+    return (inputDataErrorString);
+};

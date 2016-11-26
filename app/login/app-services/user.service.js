@@ -55,6 +55,7 @@
         function handleError(res) {
             return $q.reject(res.data);
         }
+      
     }
 
 })();

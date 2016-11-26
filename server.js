@@ -75,14 +75,14 @@ app.put('/inventory/:id', function (req, res) {
 
 var validateInventoryInputData = function(req){
 	console.log("Backend validation of the inventory input data");
-	if (!validateInputs.nodeValidateStringNumbersAndSpaces(req.body.make, 2, 20, "make")){ return false; }
-	if (!validateInputs.nodeValidateStringNumbersAndSpaces(req.body.model, 2, 20, "model")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.miles, 1, 9, "miles")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.year, 4, 4, "year")){ return false; }
-	if (!validateInputs.nodeValidateString(req.body.color, 2, 20, "color")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.price, 1, 9, "price")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.cost, 1, 9, "cost")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.description, 0, 100, "description")){ return false; }
+	if (validateInputs.nodeValidateStringNumbersAndSpaces(req.body.make, 2, 20, "make") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateStringNumbersAndSpaces(req.body.model, 2, 20, "model") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateNumber(req.body.miles, 1, 9, "miles") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateNumber(req.body.year, 4, 4, "year") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateString(req.body.color, 2, 20, "color") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateNumber(req.body.price, 1, 9, "price") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateNumber(req.body.cost, 1, 9, "cost") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateNumber(req.body.description, 0, 100, "description") !== 'success'){ return false; }
 	return true;
 };
 /* End Inventory Section */
@@ -184,6 +184,7 @@ app.post('/employees', function (req, res) {
   console.log(req.body);
 	if ( validateEmployeesInputData(req) ){
       if(req.body.hash && req.body.hash !== ''){
+        //is this more secure if we do it on the browser?
         req.body.hash = bcrypt.hashSync(req.body.hash, 10);
       }
       db.users.insert(req.body, function(err, doc) {
@@ -267,13 +268,13 @@ app.put('/users/:id', function (req, res) {
 
 var validateEmployeesInputData = function(req){
 	console.log("Backend validation of the employees input data");
-	if (!validateInputs.nodeValidateString(req.body.firstName, 2, 20, "first name")){ return false; }
-	if (!validateInputs.nodeValidateString(req.body.lastName, 2, 20, "last name")){ return false; }
-	if (!validateInputs.nodeValidateNumber(req.body.employeeNumber, 1, 6, "employee number")){ return false; }
+	if (validateInputs.nodeValidateString(req.body.firstName, 2, 20, "first name", null) !== 'success'){ return false; }
+	if (validateInputs.nodeValidateString(req.body.lastName, 2, 20, "last name") !== 'success'){ return false; }
+	if (validateInputs.nodeValidateNumber(req.body.employeeNumber, 1, 6, "employee number") !== 'success'){ return false; }
 	// add check if we have another employee with the same number
-	if (!validateInputs.nodeValidatePhoneNumber(req.body.phoneNumber)){ return false; }
-	if (!validateInputs.nodeValidateEmailAddress(req.body.emailAddress)){ return false; }
-    if (!validateInputs.nodeValidateListOfStrings(req.body.usertype, ['employee', 'customer'])){ return false; }
+	if (validateInputs.nodeValidatePhoneNumber(req.body.phoneNumber) !== 'success'){ return false; }
+	if (validateInputs.nodeValidateEmailAddress(req.body.emailAddress) !== 'success'){ return false; }
+    if (validateInputs.nodeValidateListOfStrings(req.body.usertype, ['employee', 'customer']) !== 'success'){ return false; }
 	return true;
 };
 /* End Employees Section */

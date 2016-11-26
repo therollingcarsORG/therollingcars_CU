@@ -23,12 +23,17 @@ module.exports = {
 		//var re = /\S+@\S+\.\S+/; //paranoid mode off
 		return validateRegex(inputEmailAddress, 7, 100, re, customAlertMessage);
 	},
+    nodeValidatePassword: function(inputPassword, minLength, maxLength){
+        var customAlertMessage = "The password must be between " + minLength + " and " + maxLength + " chars, it can contain only letters and numbers and must have at least 1 number, 1 uppercase and 1 lowercase characters";
+        //we can use this if we want special chars /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{1,}$/
+        return validateRegex(inputPassword, minLength, maxLength, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{1,}$/, customAlertMessage);
+    },
     nodeValidateListOfStrings: function(inputText, stringsAllowed){
       if (stringsAllowed.indexOf(inputText) == -1) {
         console.log('The string selected is not included in the list: ' + stringsAllowed);
-        return false;
+        return 'The string selected is not included in the list: ' + stringsAllowed;
       } else {
-        return true;
+        return 'success';
       }   
     }
 };
@@ -37,11 +42,12 @@ var validateRegex = function(inputData, minLength, maxLength, regex, customAlert
 	if (!inputData || inputData.length < minLength || inputData.length > maxLength || !regex.test(inputData)){
 		if (customAlertMessage && customAlertMessage !== ''){
 			console.log(customAlertMessage);
+            return customAlertMessage;
 		} else {
 			console.log('I can not validate the input data');
+            return 'I can not validate the input data';
 		}
-		return false;
 	}
-	return true;
+	return 'success';
 };
 

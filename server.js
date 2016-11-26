@@ -75,8 +75,8 @@ app.put('/inventory/:id', function (req, res) {
 
 var validateInventoryInputData = function(req){
 	console.log("Backend validation of the inventory input data");
-	if (!validateInputs.nodeValidateString(req.body.make, 2, 20, "make")){ return false; }
-	if (!validateInputs.nodeValidateString(req.body.model, 2, 20, "model")){ return false; }
+	if (!validateInputs.nodeValidateStringNumbersAndSpaces(req.body.make, 2, 20, "make")){ return false; }
+	if (!validateInputs.nodeValidateStringNumbersAndSpaces(req.body.model, 2, 20, "model")){ return false; }
 	if (!validateInputs.nodeValidateNumber(req.body.miles, 1, 9, "miles")){ return false; }
 	if (!validateInputs.nodeValidateNumber(req.body.year, 4, 4, "year")){ return false; }
 	if (!validateInputs.nodeValidateString(req.body.color, 2, 20, "color")){ return false; }

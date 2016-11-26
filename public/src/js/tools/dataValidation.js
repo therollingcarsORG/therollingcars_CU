@@ -1,13 +1,13 @@
 var validateString = function(inputText, minLength, maxLength, inputTextName){
-	var customAlertMessage = '';
-	if ((inputTextName === 'make') || (inputTextName === 'model') || (inputTextName === 'description')) {
-		customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
-		return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z0-9 ]+$/, customAlertMessage);
-	}
-	else {
-		customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
-		return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z]+$/, customAlertMessage);
-	}
+	var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters';
+    if (minLength === 0 && (!inputText || inputText === '')){ return true; }
+    return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z]+$/, customAlertMessage);
+};
+
+var validateStringNumbersAndSpaces = function(inputText, minLength, maxLength, inputTextName){
+    var customAlertMessage = 'The '+inputTextName+' must be between '+minLength+' and '+maxLength+' chars, it can contain only letters, numbers, and spaces';
+    if (minLength === 0 && (!inputText || inputText === '')){ return true; }
+    return validateRegex(inputText, minLength, maxLength, /^[a-zA-Z0-9 ]+$/, customAlertMessage);
 };
 
 var validateNumber = function(inputNumber, minLength, maxLength, inputNumberName){

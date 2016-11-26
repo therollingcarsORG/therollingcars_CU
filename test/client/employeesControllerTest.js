@@ -106,11 +106,11 @@ describe('employeesCtrl', function() {
       $scope.validateInputData();
       expect($scope.valid).toEqual(true);
 			
-			$scope.employee.phoneNumber = "800-555-5555";
+      $scope.employee.phoneNumber = "800-555-5555";
       $scope.validateInputData();
       expect($scope.valid).toEqual(true);
 			
-		  $scope.employee.phoneNumber = "800_555_5555";
+      $scope.employee.phoneNumber = "800_555_5555";
       $scope.validateInputData();
       expect($scope.valid).toEqual(false);
 
@@ -122,7 +122,7 @@ describe('employeesCtrl', function() {
       $scope.validateInputData();
       expect($scope.valid).toEqual(false);
 			
-			$scope.employee.phoneNumber = "800 555 555";
+      $scope.employee.phoneNumber = "800 555 555";
       $scope.validateInputData();
       expect($scope.valid).toEqual(false);
 

@@ -24,7 +24,7 @@ function authenticate(emailAddress, password) {
     db.users.findOne({ emailAddress: emailAddress }, function (err, user) {
         if (err) deferred.reject(err);
 
-        if (user && bcrypt.compareSync(password, user.hash)) {
+        if (validateAuthenticationInputData(emailAddress, password) && user && bcrypt.compareSync(password, user.hash)) {
             // authentication successful
             deferred.resolve(jwt.sign({ sub: user._id }, config.secret));
         } else {
@@ -58,7 +58,7 @@ function create(userParam) {
     var deferred = Q.defer();
     
     // validation
-    var rejectMessage = validateInputData(userParam);
+    var rejectMessage = validateCreateInputData(userParam);
     if (rejectMessage !== 'success'){
         deferred.reject(rejectMessage);
     }
@@ -174,7 +174,7 @@ function _delete(_id) {
 }
 
 // input data validation
-var validateInputData = function(user){
+var validateCreateInputData = function(user){
     var inputDataErrorString = 'success';
     var alertMessage = '';
     console.log("Validation of the user input data...");
@@ -197,4 +197,14 @@ var validateInputData = function(user){
     console.log("Input data successfully validated.");
 
     return (inputDataErrorString);
+};
+
+var validateAuthenticationInputData = function(emailAddress, password){
+    console.log("Validation of the authentication input data...");
+    
+    if ( validateInputs.nodeValidateEmailAddress(emailAddress) !== 'success' ){ return false; }
+    if ( validateInputs.nodeValidatePassword(password, 8, 20) !== 'success' ){ return false; }    
+
+    console.log("Input data successfully validated.");
+    return true;
 };

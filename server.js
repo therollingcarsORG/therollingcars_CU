@@ -275,6 +275,7 @@ var validateEmployeesInputData = function(req){
 	if (validateInputs.nodeValidatePhoneNumber(req.body.phoneNumber) !== 'success'){ return false; }
 	if (validateInputs.nodeValidateEmailAddress(req.body.emailAddress) !== 'success'){ return false; }
     if (validateInputs.nodeValidateListOfStrings(req.body.usertype, ['employee', 'customer']) !== 'success'){ return false; }
+    if (validateInputs.nodeValidatePassword(req.body.hash, 8, 20) !== 'success'){ return false; }
 	return true;
 };
 /* End Employees Section */

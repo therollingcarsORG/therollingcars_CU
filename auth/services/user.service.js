@@ -61,9 +61,8 @@ function create(userParam) {
     var rejectMessage = validateCreateInputData(userParam);
     if (rejectMessage !== 'success'){
         deferred.reject(rejectMessage);
-    }
-    
-    db.users.findOne(
+    } else {
+            db.users.findOne(
         { emailAddress: userParam.emailAddress },
         function (err, user) {
             if (err) {
@@ -78,7 +77,8 @@ function create(userParam) {
             }
         
         });
-    
+    }
+     
     function createUser() {
     // set user object to userParam without the cleartext password
     var user = _.omit(userParam, 'password');
@@ -175,28 +175,32 @@ function _delete(_id) {
 
 // input data validation
 var validateCreateInputData = function(user){
-    var inputDataErrorString = 'success';
+    var inputDataErrorString = 'Error: ';
     var alertMessage = '';
     console.log("Validation of the user input data...");
     
     alertMessage = validateInputs.nodeValidateString(user.firstName, 2, 20, "first name");
-    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.     '; }
     
     alertMessage = validateInputs.nodeValidateString(user.lastName, 2, 20, "last name");
-    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.     '; }
     
     alertMessage = validateInputs.nodeValidatePhoneNumber(user.phoneNumber);
-    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.     '; }
     
     alertMessage = validateInputs.nodeValidateEmailAddress(user.emailAddress);
-    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.     '; }
     
     alertMessage = validateInputs.nodeValidatePassword(user.password, 8, 20);
-    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.\n'; }    
+    if ( alertMessage !== 'success' ){ inputDataErrorString += alertMessage + '.     '; }    
 
     console.log("Input data successfully validated.");
-
-    return (inputDataErrorString);
+    
+    if (inputDataErrorString==='Error: '){
+        return 'success';
+    } else {
+        return (inputDataErrorString);
+    }
 };
 
 var validateAuthenticationInputData = function(emailAddress, password){

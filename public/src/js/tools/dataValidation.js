@@ -34,7 +34,7 @@ var validateEmailAddress = function(inputEmailAddress){
 };
 
 var validatePassword = function(inputPassword, minLength, maxLength){
-    var customAlertMessage = "The password must be between " + minLength + " and " + maxLength + "chars, it can contain only letters and numbers and must have at least 1 number, 1 uppercase and 1 lowercase characters";
+    var customAlertMessage = "The password must be between " + minLength + " and " + maxLength + " chars, it can contain only letters and numbers, and it must have at least 1 number, 1 uppercase and 1 lowercase character";
     //we can use this if we want special chars /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{1,}$/
     return validateRegex(inputPassword, minLength, maxLength, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{1,}$/, customAlertMessage);
 }

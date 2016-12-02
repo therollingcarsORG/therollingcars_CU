@@ -107,7 +107,8 @@ module.exports = function(grunt){
 					files: [
 					'node_modules/angular/angular.js',
 					'node_modules/angular-mocks/angular-mocks.js',
-					'public/src/js/**/*.js',
+					//'public/src/js/**/*.js',
+					'app/protoemployee/inventory/*.js',
 					'test/client/**/*.js'
 					]
 				}

@@ -1,5 +1,5 @@
-describe('inventoryCtrl', function() {
-  beforeEach(module('inventoryApp'));
+describe('TopCtrl', function() {
+  beforeEach(module('InvntryCtrl'));
 
   var $controller;
 
@@ -13,7 +13,7 @@ describe('inventoryCtrl', function() {
     var $scope, controller;
     beforeEach(function() {
       $scope = {};
-      controller = $controller('inventoryCtrl', { $scope: $scope });
+      controller = $controller('TopCtrl', { $scope: $scope });
       $scope.vehicle = {
         make: "fiat 100",
         model: "500 s",

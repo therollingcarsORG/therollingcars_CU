@@ -1,7 +1,19 @@
-.description {
-  width: 200px;
+.employee-nav-menu {
+
 }
 
-.container {
+.employee-nav-item {
+
+}
+
+.employee-navbar {
 	padding: 0;
+}
+
+.jumbotron {
+	background: #D3D3D3;
+}
+
+.inventory-thumbnail {
+	width: 80px;
 }

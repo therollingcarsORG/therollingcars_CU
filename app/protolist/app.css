@@ -1,7 +1,9 @@
-
 /* View: Vehicle list */
+
 .vehicles {
   list-style: none;
+  max-height: 86vh;
+  overflow: scroll;
 }
 
 .vehicles li {

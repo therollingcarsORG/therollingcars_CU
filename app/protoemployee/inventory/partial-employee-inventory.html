@@ -12,6 +12,7 @@
         <th>Invoice Cost</th>
         <th>Miles</th>
         <th>Description</th>
+        <th>Image URL</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
         <td><input class="form-control cost" ng-model="vehicle.cost"></td>
         <td><input class="form-control miles" ng-model="vehicle.miles"></td>
         <td><input class="form-control description" ng-model="vehicle.description"></td>
+        <td><input class="form-control imgurl" ng-model="vehicle.imgurl"></td>
         <td ng-hide="editMode"><button class="btn btn-primary" ng-click="addVehicle()">+</button></td>
         <td ng-show="editMode"><button class="btn btn-warning" ng-click="update()">Update</button></td>
         <td><button class="btn btn-danger" ng-click="deselect()">X</button></td>
@@ -37,6 +39,7 @@
         <td>{{vehicle.cost}}</td>
         <td>{{vehicle.miles}}</td>
         <td>{{vehicle.description}}</td>
+        <td><img class="inventory-thumbnail" src="{{vehicle.imgurl}}" alt="Image Not Available"</td>
         <td><button class="btn btn-danger" ng-click="remove(vehicle._id)">X</button></td>
         <td><button class="btn btn-warning" ng-click="edit(vehicle._id)">Edit</button></td>
       </tr>

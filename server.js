@@ -65,7 +65,7 @@ app.put('/inventory/:id', function (req, res) {
 	if ( validateInventoryInputData(req) ){
 	  db.inventory.findAndModify({
     	query: {_id: mongojs.ObjectId(id)},
-    	update: {$set: {make: req.body.make, model: req.body.model, miles: req.body.miles, year: req.body.year, color: req.body.color, price: req.body.price, cost: req.body.cost, description: req.body.description}},
+    	update: {$set: {make: req.body.make, model: req.body.model, miles: req.body.miles, year: req.body.year, color: req.body.color, price: req.body.price, cost: req.body.cost, description: req.body.description, imgurl: req.body.imgurl}},
     	new: true}, function (err, doc) { res.json(doc); }
   	);
 	} else {

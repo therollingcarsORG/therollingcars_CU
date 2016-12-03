@@ -109,7 +109,8 @@ module.exports = function(grunt){
 					'node_modules/angular-mocks/angular-mocks.js',
 					//'public/src/js/**/*.js',
 					'app/protoemployee/inventory/*.js',
-					'test/client/**/*.js'
+					'test/client/employeesControllerTest.js',
+					'test/client/inventoryControllerTest.js'
 					]
 				}
 			}

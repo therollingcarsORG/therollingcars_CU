@@ -12,6 +12,7 @@ document.head.appendChild(validation);
       console.log("Inventory refreshed.");
       $scope.inventory = response;
       $scope.vehicle = "";
+      $scope.editMode = false;
     });
   };
 
@@ -49,6 +50,8 @@ document.head.appendChild(validation);
     $http.get('/inventory/' + id).success(function(response) {
       $scope.vehicle = response;
     });
+    $scope.editMode = true;
+    console.log("edit mode: " + $scope.editMode);
   };  
 
   $scope.update = function() {
@@ -59,6 +62,7 @@ document.head.appendChild(validation);
         refresh();
       });
     };
+    $scope.editMode = false;
   };
 
   $scope.deselect = function() {

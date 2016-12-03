@@ -24,8 +24,8 @@
         <td><input class="form-control cost" ng-model="vehicle.cost"></td>
         <td><input class="form-control miles" ng-model="vehicle.miles"></td>
         <td><input class="form-control description" ng-model="vehicle.description"></td>
-        <td><button class="btn btn-primary" ng-click="addVehicle()">+</button></td>
-        <td><button class="btn btn-warning" ng-click="update()">Update</button></td>
+        <td ng-hide="editMode"><button class="btn btn-primary" ng-click="addVehicle()">+</button></td>
+        <td ng-show="editMode"><button class="btn btn-warning" ng-click="update()">Update</button></td>
         <td><button class="btn btn-danger" ng-click="deselect()">X</button></td>
       </tr>
       <tr ng-repeat="vehicle in inventory">

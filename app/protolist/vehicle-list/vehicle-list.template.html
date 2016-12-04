@@ -22,15 +22,17 @@
       <!--Body content-->
 
       <ul class="vehicles">
-        <li ng-repeat="vehicle in $ctrl.vehicles | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
-          <a ui-sref='vehicleId({vehicleTag: "{{vehicle._id}}" })'  class="thumb">
-            <img ng-src="img/golf.png" alt="{{vehicle.make}} {{vehicle.model}}" />
+        <li class="thumbnail" ng-repeat="vehicle in $ctrl.vehicles | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+          <a class="thumb" ui-sref='vehicleId({vehicleTag: "{{vehicle._id}}" })'>
+            <img class="showroom-thumb" src="{{vehicle.imgurl}}" alt="Image Not Available">
           </a>
-          <a  ui-sref='vehicleId({vehicleTag: "{{vehicle._id}}" })' >{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</a>
-          <p>${{vehicle.price}} &nbsp; | &nbsp;
-          {{vehicle.miles}} miles <br>
-          Exterior Color: {{vehicle.color}} <br>
+          <div class="showroom-description">
+            <a ui-sref='vehicleId({vehicleTag: "{{vehicle._id}}" })' >{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</a>
+            <p>${{vehicle.price}} &nbsp; | &nbsp;
+            {{vehicle.miles}} miles <br>
+            Exterior Color: {{vehicle.color}} <br>
           {{vehicle.description}} </p>
+          </div>
         </li>
       </ul>
 

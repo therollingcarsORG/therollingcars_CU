@@ -1,4 +1,7 @@
-'use strict';
+(function () {
+   'use strict';
+   // this function is strict...
+}());
 
 // Register `vehicleDetail` component, along with its associated controller and template
 angular.

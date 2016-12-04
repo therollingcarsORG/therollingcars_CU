@@ -119,7 +119,7 @@ function update(_id, userParam) {
 
                     if (user) {
                         // emailAddress already exists
-                        deferred.reject('emailAddress "' + req.body.emailAddress + '" is already taken')
+                        deferred.reject('emailAddress "' + req.body.emailAddress + '" is already taken');
                     } else {
                         updateUser();
                     }

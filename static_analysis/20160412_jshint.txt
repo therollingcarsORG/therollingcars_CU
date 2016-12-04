@@ -1,0 +1,264 @@
+###First run:
+
+C:\cvn\1\therollingcars>grunt --force
+Running "less:build" (less) task
+>> 1 stylesheet created.
+
+Running "cssmin:build" (cssmin) task
+>> 1 file created. 64 B → 24 B
+
+Running "jshint:all" (jshint) task
+
+   public/src/js/controllers/comboProd.js
+    129 |    $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
+                                          ^ ['Authorization'] is better written in dot notation.
+   public/src/js/tools/dataValidation.js
+     40 |}
+          ^ Missing semicolon.
+
+>> 2 errors in 10 files
+Warning: Task "jshint:all" failed. Used --force, continuing.
+
+Running "uglify:build" (uglify) task
+>> 1 file created.
+
+Running "concurrent:tasks" (concurrent) task
+    Running "watch" task
+    Running "nodemon:dev" (nodemon) task
+    Waiting...
+    [nodemon] 1.11.0
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching: *.*
+    [nodemon] starting `node server.js`
+    App listening at port 3000
+	
+###Added the semicolon to public/src/js/tools/dataValidation.js
+
+    [nodemon] restarting due to changes...
+    [nodemon] starting `node server.js`
+    >> File "public\src\js\tools\dataValidation.js" changed.
+    App listening at port 3000
+    Running "jshint:all" (jshint) task
+
+       public/src/js/controllers/comboProd.js
+        129 |    $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
+                                              ^ ['Authorization'] is better written in dot notation.
+
+    >> 1 error in 10 files
+    Warning: Task "jshint:all" failed. Used --force, continuing.
+
+    Running "uglify:build" (uglify) task
+    >> 1 file created.
+
+    [nodemon] restarting due to changes...
+    Done, but with warnings.
+    Completed in 2.771s at Sun Dec 04 2016 14:44:25 GMT+0100 (W. Europe Standard Time) - Waiting...
+    [nodemon] starting `node server.js`
+    App listening at port 3000	
+
+###Changed to dot notation public/src/js/controllers/comboProd.js
+
+	[nodemon] restarting due to changes...
+    [nodemon] starting `node server.js`
+    >> File "public\src\js\controllers\comboProd.js" changed.
+    App listening at port 3000
+    Running "jshint:all" (jshint) task
+    >> 10 files lint free.
+
+    Running "uglify:build" (uglify) task
+    >> 1 file created.
+
+    [nodemon] restarting due to changes...
+    Done, without errors.
+    Completed in 2.714s at Sun Dec 04 2016 14:47:18 GMT+0100 (W. Europe Standard Time) - Waiting...
+    [nodemon] starting `node server.js`
+    App listening at port 3000
+	
+###Files are lint free
+
+###Extending the list of the files checked to ['public/src/js/**/*.js', 'auth/**/*.js', 'app/**/*.js']
+
+C:\cvn\1\therollingcars>grunt --force
+Running "less:build" (less) task
+>> 1 stylesheet created.
+
+Running "cssmin:build" (cssmin) task
+>> 1 file created. 64 B → 24 B
+
+Running "jshint:all" (jshint) task
+
+   auth/services/user.service.js
+    122 |                        deferred.reject('emailAddress "' + req.body.emailAddress + '" is already taken')
+                                                                                                                 ^ Missing semicolon.
+   app/protoemployee/inventory/dataValidation.js
+     32 |        if (customAlertMessage && customAlertMessage != ''){
+                                                              ^ Use '!==' to compare with ''.
+     46 |}
+          ^ Missing semicolon.
+   app/protoemployee/inventory/inventoryCtrl.js
+     38 |    };
+              ^ Unnecessary semicolon.
+     64 |    };
+              ^ Unnecessary semicolon.
+   app/protolist/core/checkmark/checkmark.filter.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+   app/protolist/core/checkmark/checkmark.filter.spec.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+      3 |describe('checkmark', function() {
+         ^ 'describe' is not defined.
+      5 |  beforeEach(module('core'));
+           ^ 'beforeEach' is not defined.
+      5 |  beforeEach(module('core'));
+                      ^ 'module' is not defined.
+      7 |  it('should convert boolean values to unicode checkmark or cross',
+           ^ 'it' is not defined.
+      8 |    inject(function(checkmarkFilter) {
+             ^ 'inject' is not defined.
+      9 |      expect(checkmarkFilter(true)).toBe('\u2713');
+               ^ 'expect' is not defined.
+     10 |      expect(checkmarkFilter(false)).toBe('\u2718');
+               ^ 'expect' is not defined.
+   app/protolist/core/core.module.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+   app/protolist/core/vehicle/vehicle.module.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+   app/protolist/core/vehicle/vehicle.service.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+   app/protolist/core/vehicle/vehicle.service.spec.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+      3 |describe('Vehicle', function() {
+         ^ 'describe' is not defined.
+     13 |  beforeEach(function() {
+           ^ 'beforeEach' is not defined.
+     18 |  beforeEach(module('core.vehicle'));
+           ^ 'beforeEach' is not defined.
+     21 |  beforeEach(inject(function(_$httpBackend_, _Phone_) {
+           ^ 'beforeEach' is not defined.
+     14 |    jasmine.addCustomEqualityTester(angular.equals);
+             ^ 'jasmine' is not defined.
+     18 |  beforeEach(module('core.vehicle'));
+                      ^ 'module' is not defined.
+     21 |  beforeEach(inject(function(_$httpBackend_, _Phone_) {
+                      ^ 'inject' is not defined.
+     25 |    Vehicle = _Vehicle_;
+                       ^ '_Vehicle_' is not defined.
+     29 |  afterEach(function () {
+           ^ 'afterEach' is not defined.
+     34 |  it('should fetch the phones data from `protolist/vehicles/vehicles.json`', function() {
+           ^ 'it' is not defined.
+     37 |    expect(vehicles).toEqual([]);
+             ^ 'expect' is not defined.
+     40 |    expect(vehicles).toEqual(vehiclesData);
+             ^ 'expect' is not defined.
+   app/protolist/vehicle-detail/vehicle-detail.component.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+     10 |        console.log("Fetched detail page for vehicleId: " + $stateParams.vehicleTag);
+                 ^ 'console' is not defined.
+   app/protolist/vehicle-detail/vehicle-detail.component.spec.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+      3 |describe('vehicleDetail', function() {
+         ^ 'describe' is not defined.
+      9 |  describe('VehicleDetailController', function() {
+           ^ 'describe' is not defined.
+      6 |  beforeEach(module('vehicleDetail'));
+           ^ 'beforeEach' is not defined.
+     16 |    beforeEach(inject(function($componentController, $httpBackend, $routeParams) {
+             ^ 'beforeEach' is not defined.
+      6 |  beforeEach(module('vehicleDetail'));
+                      ^ 'module' is not defined.
+     16 |    beforeEach(inject(function($componentController, $httpBackend, $routeParams) {
+                        ^ 'inject' is not defined.
+     25 |    it('should fetch the vehicle details', function() {
+             ^ 'it' is not defined.
+     26 |      jasmine.addCustomEqualityTester(angular.equals);
+               ^ 'jasmine' is not defined.
+     28 |      expect(ctrl.vehicle).toEqual({});
+               ^ 'expect' is not defined.
+     31 |      expect(ctrl.vehicle).toEqual(xyzVehicleData);
+               ^ 'expect' is not defined.
+   app/protolist/vehicle-detail/vehicle-detail.module.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+   app/protolist/vehicle-list/vehicle-list.component.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+   app/protolist/vehicle-list/vehicle-list.component.spec.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+      3 |describe('vehicleList', function() {
+         ^ 'describe' is not defined.
+      9 |  describe('VehicleListController', function() {
+           ^ 'describe' is not defined.
+      6 |  beforeEach(module('vehicleList'));
+           ^ 'beforeEach' is not defined.
+     12 |    beforeEach(inject(function($componentController, _$httpBackend_) {
+             ^ 'beforeEach' is not defined.
+      6 |  beforeEach(module('vehicleList'));
+                      ^ 'module' is not defined.
+     12 |    beforeEach(inject(function($componentController, _$httpBackend_) {
+                        ^ 'inject' is not defined.
+     20 |    it('should create a `vehicles` property with 2 vehicles fetched with `$http`', function() {
+             ^ 'it' is not defined.
+     29 |    it('should set a default value for the `orderProp` property', function() {
+             ^ 'it' is not defined.
+     21 |      jasmine.addCustomEqualityTester(angular.equals);
+               ^ 'jasmine' is not defined.
+     23 |      expect(ctrl.vehicles).toEqual([]);
+               ^ 'expect' is not defined.
+     26 |      expect(ctrl.vehicles).toEqual([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+               ^ 'expect' is not defined.
+     30 |      expect(ctrl.orderProp).toBe('age');
+               ^ 'expect' is not defined.
+   app/protolist/vehicle-list/vehicle-list.module.js
+      1 |'use strict';
+         ^ Use the function form of "use strict".
+
+>> 59 errors in 36 files
+Warning: Task "jshint:all" failed. Used --force, continuing.
+
+Running "uglify:build" (uglify) task
+>> 1 file created.
+
+Running "concurrent:tasks" (concurrent) task
+    Running "nodemon:dev" (nodemon) task
+    [nodemon] 1.11.0
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching: *.*
+    [nodemon] starting `node server.js`
+    Running "watch" task
+    Waiting...
+    App listening at port 3000
+	
+###Fixed
+
+C:\cvn\1\therollingcars>grunt --force
+Running "less:build" (less) task
+>> 1 stylesheet created.
+
+Running "cssmin:build" (cssmin) task
+>> 1 file created. 64 B → 24 B
+
+Running "jshint:all" (jshint) task
+>> 36 files lint free.
+
+Running "uglify:build" (uglify) task
+>> 1 file created.
+
+Running "concurrent:tasks" (concurrent) task
+    Running "watch" task
+    Running "nodemon:dev" (nodemon) task
+    Waiting...
+    [nodemon] 1.11.0
+    [nodemon] to restart at any time, enter `rs`
+    [nodemon] watching: *.*
+    [nodemon] starting `node server.js`
+    App listening at port 3000
+

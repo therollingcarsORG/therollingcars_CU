@@ -20,7 +20,7 @@ module.exports = function(grunt){
 
 	    // check all js files for errors
     	jshint: {
-      		all: ['public/src/js/**/*.js'],
+      		all: ['public/src/js/**/*.js', 'auth/**/*.js', 'app/**/*.js'],
 				  options: {
             jshintrc: '.jshintrc'
     			}

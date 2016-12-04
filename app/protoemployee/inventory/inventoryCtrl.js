@@ -35,7 +35,7 @@ document.head.appendChild(validation);
         console.log(response);
         refresh();
       });
-    };
+    }
   };
 
   $scope.remove = function(id) {
@@ -61,7 +61,7 @@ document.head.appendChild(validation);
       $http.put('/inventory/' + $scope.vehicle._id, $scope.vehicle).success(function(response) {
         refresh();
       });
-    };
+    }
     $scope.editMode = false;
   };
 

@@ -176,7 +176,7 @@ function _delete(_id) {
 // input data validation
 var validateCreateInputData = function(user){
     var inputDataErrorString = 'Error: ';
-    var alertMessage = '';
+    var alertMessage;
     console.log("Validation of the user input data...");
     
     alertMessage = validateInputs.nodeValidateString(user.firstName, 2, 20, "first name");

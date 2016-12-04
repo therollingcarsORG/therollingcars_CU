@@ -29,7 +29,7 @@ module.exports = {
         return validateRegex(inputPassword, minLength, maxLength, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{1,}$/, customAlertMessage);
     },
     nodeValidateListOfStrings: function(inputText, stringsAllowed){
-      if (stringsAllowed.indexOf(inputText) == -1) {
+      if (stringsAllowed.indexOf(inputText) === -1) {
         console.log('The string selected is not included in the list: ' + stringsAllowed);
         return 'The string selected is not included in the list: ' + stringsAllowed;
       } else {

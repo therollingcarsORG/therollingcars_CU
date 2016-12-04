@@ -134,7 +134,7 @@ function run($http, $rootScope, $window) {
     // !!!!!!!!!!!!!!!!!! 
     $http.get('/api/users/current').success(function(data)
     {
-        if(data.usertype == "employee")
+        if(data.usertype === "employee")
         {
             $rootScope.isEmployee = true;
         }

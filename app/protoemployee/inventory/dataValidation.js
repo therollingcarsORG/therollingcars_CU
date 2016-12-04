@@ -46,7 +46,7 @@ var validatePassword = function(inputPassword, minLength, maxLength){
 };
 
 var validateListOfStrings = function(inputText, stringsAllowed){
-  if (stringsAllowed.indexOf(inputText) == -1) {
+  if (stringsAllowed.indexOf(inputText) === -1) {
     alert ('The string selected is not included in the list: ' + stringsAllowed);
     return false;
   } else {

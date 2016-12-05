@@ -1,0 +1,5 @@
+{
+    "connectionString": "mongodb://CarsAdmin:carsadmin@ds127938.mlab.com:27938/rollingcarsdb",
+    "apiUrl": "https://rollingcarsheroku.herokuapp.com/api",
+    "secret": "REPLACE THIS WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+}

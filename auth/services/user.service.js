@@ -1,4 +1,5 @@
-var config = require('config.json');
+var environment = process.env.NODE_ENV;
+var config = (environment == 'production') ? require('prodConfig.json') : require('config.json');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');

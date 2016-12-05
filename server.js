@@ -4,10 +4,17 @@ var express = require('express');
 var session = require('express-session');
 var app = express();
 var mongojs = require('mongojs');
-var db = mongojs('inventory', ['inventory','users','employees','contactlist']);
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
-var config = require('config.json');
+var environment = process.env.NODE_ENV;
+
+console.log('ENV: ' + environment);
+
+var config = (environment == 'production') ? require('prodConfig.json') : require('config.json');
+var db = mongojs(config.connectionString, ['inventory','users','employees','contactlist']);
+
+console.log('db: ' + config.connectionString);
+
 var validateInputs = require('public/src/js/tools/dataValidationBackend.js');
 var bcrypt = require('bcryptjs');
 

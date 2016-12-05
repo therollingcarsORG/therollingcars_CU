@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- stable
+before_script:
+- npm install grunt-cli -g
+env:
+#- NODE_ENV="development"
+- NODE_ENV="production"
+services:
+- mongodb
+script: grunt test
+deploy:
+  provider: heroku
+  api_key:
+    secure: X70M6PIsovCaUjFDRqKw1URLvSViBrXLMltjdsc4cIhtC0ZZmZAEppQ0ifD2louhLwAp/28rZ4n200g7lFlM3YWoRjqNDjiFR2QqoBG+wH6IOEpf/2MaaNCtrOzluevyoYoOTVFe/roU2MGow/AG+Q8qsvE/lRVTtECmt2n3lsvSUpgszfgItvOuVU8krg28f+/LngPxMhjl1XMnYNE54sY21GzLR2eATnI1SQBpY5gAW1jhcieqqNi8W2u3PIYMpC8MQlFQWymkbx6NpILzc2p4GvWpt3YjKadrRrDIvKN5Mtn7CoRy74pTu6ldt3WMtFLYDq303ak+dAMSK/NL2hHTmxzbvL+puLlkdsw+Uo5o4APBf9ZgnDsFqf3M1FWbqE70A2SfI6Ijs53ZAXF+GXIBRdoWyvatPvOv4MkZ+zLP1r1v2wEDwJ/9X254aI1QoIc8ArwXc5qSoGyaXHrwXor6pVqv7tqBZ7FzMQ3EGdpOj7uvX03SpyoZhqVN9weP4EsB7sMbbuk70GTDROfx7WZyUgwt0Tp39LRxdRtgyzQ2/VvTb/B5GZiVNOhwFhRj2Rrguv2XTaBR+kKy207telnwo1Vle9Pr72NGAqbFfC5LPg+muWbwW0Ib3Q0a65Qh6M66VL6DGkTd3QBiNZqiDNM/gQwlWj0WvQ/uNf/HOVA=
+  app: rollingcarsheroku

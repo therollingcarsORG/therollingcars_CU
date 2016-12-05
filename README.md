@@ -15,6 +15,9 @@ grunt test-client 			// jshint, karma
 npm start					// start a server  
 
 
+PUSH UPDATE
+
+
 Some experimental code using shared model between controllers and views
 
 > see file /services/SharedModel.js, /controllers/BtmCtrl.js, and /views/index.html  

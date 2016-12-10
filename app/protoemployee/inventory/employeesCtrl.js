@@ -63,7 +63,9 @@ angular.module('employeesApp', []).controller('employeesCtrl', ['$scope', '$http
       if (!validatePhoneNumber($scope.user.phoneNumber)){ $scope.valid = false; }
       if (!validateEmailAddress($scope.user.emailAddress)){ $scope.valid = false; }
       if (!validateListOfStrings($scope.user.usertype, ['employee', 'customer'])){ $scope.valid = false; }
-      if (!validatePassword($scope.user.hash, 8, 20)){ $scope.valid = false; }
+      if ($scope.user.hash !== '') {
+				if (!validatePassword($scope.user.hash, 8, 20)){ $scope.valid = false; }	
+			}
   };
     
     

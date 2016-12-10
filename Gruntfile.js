@@ -105,13 +105,33 @@ module.exports = function(grunt){
 					singleRun: true,
 					browsers: ['PhantomJS'],
 					files: [
-					'node_modules/angular/angular.js',
-					'node_modules/angular-mocks/angular-mocks.js',
-					//'public/src/js/**/*.js',
-					'app/protoemployee/inventory/*.js',
-					'test/client/employeesControllerTest.js',
-					'test/client/inventoryControllerTest.js'
-					]
+						'node_modules/angular/angular.js',
+						'node_modules/angular-mocks/angular-mocks.js',
+						//'public/src/js/**/*.js',
+						'app/protoemployee/inventory/*.js',
+						'test/client/employeesControllerTest.js',
+						'test/client/inventoryControllerTest.js'
+					],
+					// preprocess matching files before serving them to the browser
+				    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+				    preprocessors: {
+				        'app/**/*.js': ['coverage'],
+				        //'./server.js': ['coverage']
+				    },
+
+
+				    // test results reporter to use
+				    // possible values: 'dots', 'progress'
+				    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+				    reporters: ['coverage', 'progress'],
+
+				    coverageReporter: {        
+				        dir: './',
+				        reporters: [
+				                { type: 'html', subdir: 'report-html' },                
+				                //{ type: 'teamcity', subdir: '.', file: 'teamcity.txt' },
+				        ]
+				    },
 				}
 			}
 		},

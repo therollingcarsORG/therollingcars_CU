@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for inventory/inventoryCtrl.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">inventory/</a> inventoryCtrl.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">54.1% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>33/61</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">77.78% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>14/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">26.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">48.15% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>26/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// public/src/js/controllers/controller.js
+&nbsp;
+angular.module('InvntryCtrl', []).controller('TopCtrl', ['$scope', '$http', function($scope, $http) {
+&nbsp;
+console.log("inventory controller");
+var validation = document.createElement('script');
+validation.src = 'protoemployee/inventory/dataValidation.js';
+document.head.appendChild(validation);
+&nbsp;
+  var refresh = function() {
+    $http.get('/inventory').success(<span class="fstat-no" title="function not covered" >function(response) {</span>
+<span class="cstat-no" title="statement not covered" >      console.log("Inventory refreshed.");</span>
+<span class="cstat-no" title="statement not covered" >      $scope.inventory = response;</span>
+<span class="cstat-no" title="statement not covered" >      $scope.vehicle = "";</span>
+<span class="cstat-no" title="statement not covered" >      $scope.editMode = false;</span>
+    });
+  };
+&nbsp;
+  var loadUsers = function() {
+      $http.get('/users').success(<span class="fstat-no" title="function not covered" >function(response) {</span>
+<span class="cstat-no" title="statement not covered" >      console.log("Employees refreshed.");</span>
+<span class="cstat-no" title="statement not covered" >      $scope.users = response;</span>
+<span class="cstat-no" title="statement not covered" >      $scope.user = "";</span>
+    });
+  };
+&nbsp;
+  refresh();
+  loadUsers();
+&nbsp;
+  $scope.addVehicle = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    console.log($scope.vehicle);</span>
+<span class="cstat-no" title="statement not covered" >    $scope.validateInputData();</span>
+<span class="cstat-no" title="statement not covered" >    if( $scope.valid === true ) {</span>
+<span class="cstat-no" title="statement not covered" >      $http.post('/inventory', $scope.vehicle).success(<span class="fstat-no" title="function not covered" >function(response) {</span></span>
+<span class="cstat-no" title="statement not covered" >        console.log(response);</span>
+<span class="cstat-no" title="statement not covered" >        refresh();</span>
+      });
+    }
+  };
+&nbsp;
+  $scope.remove = <span class="fstat-no" title="function not covered" >function(id) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log(id);</span>
+<span class="cstat-no" title="statement not covered" >    $http.delete('/inventory/' + id).success(<span class="fstat-no" title="function not covered" >function(response) {</span></span>
+<span class="cstat-no" title="statement not covered" >      refresh();</span>
+    });
+  };
+&nbsp;
+  $scope.edit = <span class="fstat-no" title="function not covered" >function(id) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log(id);</span>
+<span class="cstat-no" title="statement not covered" >    $http.get('/inventory/' + id).success(<span class="fstat-no" title="function not covered" >function(response) {</span></span>
+<span class="cstat-no" title="statement not covered" >      $scope.vehicle = response;</span>
+    });
+<span class="cstat-no" title="statement not covered" >    $scope.editMode = true;</span>
+<span class="cstat-no" title="statement not covered" >    console.log("edit mode: " + $scope.editMode);</span>
+  };  
+&nbsp;
+  $scope.update = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    console.log($scope.vehicle._id);</span>
+<span class="cstat-no" title="statement not covered" >    $scope.validateInputData();</span>
+<span class="cstat-no" title="statement not covered" >    if( $scope.valid === true ) {</span>
+<span class="cstat-no" title="statement not covered" >      $http.put('/inventory/' + $scope.vehicle._id, $scope.vehicle).success(<span class="fstat-no" title="function not covered" >function(response) {</span></span>
+<span class="cstat-no" title="statement not covered" >        refresh();</span>
+      });
+    }
+<span class="cstat-no" title="statement not covered" >    $scope.editMode = false;</span>
+  };
+&nbsp;
+  $scope.deselect = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >    $scope.vehicle = "";</span>
+  };
+&nbsp;
+  // USER FUNCTIONS - moved to employeesCtrl.js
+/*
+  $scope.makeEmployee = function(id) {
+    console.log("Switching customer to employee.");
+    $http.get('/users/' + id).success(function(response) {
+      $scope.user = response;
+      $scope.user.usertype = 'employee';
+      $http.put('/users/' + $scope.user._id, $scope.user).success(function(response) {
+        loadUsers();
+      });
+    });
+  };
+&nbsp;
+  $scope.makeCustomer = function(id) {
+    console.log("Switching employee to customer.");
+    $http.get('/users/' + id).success(function(response) {
+      $scope.user = response;
+      $scope.user.usertype = 'customer';
+      $http.put('/users/' + $scope.user._id, $scope.user).success(function(response) {
+        loadUsers();
+      });
+    });
+  };
+*/
+  // END USER FUNCTIONS
+  
+  $scope.validateInputData = function(){
+    console.log("Validating input data");
+    $scope.valid = true;
+    if (!validateStringNumbersAndSpaces($scope.vehicle.make, 2, 20, "make")){ $scope.valid = false; }
+    if (!validateStringNumbersAndSpaces($scope.vehicle.model, 2, 20, "model")){ $scope.valid = false; }
+    if (!validateNumber($scope.vehicle.miles, 1, 9, "miles")){ $scope.valid = false; }
+    if (!validateNumber($scope.vehicle.year, 4, 4, "year")){ $scope.valid = false; }
+    if (!validateString($scope.vehicle.color, 2, 20, "color")){ $scope.valid = false; }
+    if (!validateNumber($scope.vehicle.price, 1, 9, "price")){ $scope.valid = false; }
+    if (!validateNumber($scope.vehicle.cost, 1, 9, "cost")){ $scope.valid = false; }
+  };
+&nbsp;
+}]);</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Dec 10 2016 17:00:09 GMT-0600 (CST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

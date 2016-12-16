@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var config = require('config.json');
+var environment = process.env.NODE_ENV;
+var config = (environment == 'production') ? require('prodConfig.json') : require('config.json');
 
 router.get('/', function (req, res) {
     res.render('register');

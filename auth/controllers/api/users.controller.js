@@ -1,4 +1,5 @@
-var config = require('config.json');
+var environment = process.env.NODE_ENV;
+var config = (environment == 'production') ? require('prodConfig.json') : require('config.json');
 var express = require('express');
 var router = express.Router();
 var userService = require('auth/services/user.service');

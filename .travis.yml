@@ -8,7 +8,6 @@ env:
 - NODE_ENV="production"
 services:
 - mongodb
-script: grunt test
 deploy:
   provider: heroku
   api_key:
@@ -21,3 +20,4 @@ addons:
 script:
   #other scripts go here
   - sonar-scanner
+  - grunt test
